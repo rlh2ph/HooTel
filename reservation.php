@@ -9,69 +9,76 @@
 
 <?php
   $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
-  $result = $mysqli->query("SELECT * FROM guest WHERE last_name = 'Floryan'");
-  while ($row = mysqli_fetch_assoc($result)) {
-    echo "Guest ID: ";
-    echo $row['guest_id'];
-    echo "<br>";
-    echo "Last Name: ";
-    echo $row['last_name'];
-    echo "<br>";
-    echo "First Name: ";
-    echo $row['first_name'];
-    echo "<br>";
-    echo "DOB: ";
-    echo $row['DOB'];
-    echo "<br>";
-  }
 ?>
 
 <?php
 // define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
+$firstnameErr = $lastnameErr = $dobErr = $partysizeErr = $checkinErr = $checkoutErr = $roomnumErr = "";
+$firstname = $lastname = $dob = $partysize = $checkin = $checkout = $roomnum = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["name"])) {
-    $nameErr = "Name is required";
+  if (empty($_POST["firstname"])) {
+    $firstnameErr = "First name is required";
   } else {
-    $name = test_input($_POST["name"]);
+    $firstname = test_input($_POST["firstname"]);
     // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      $nameErr = "Only letters and white space allowed";
+    if (!preg_match("/^[a-zA-Z ]*$/",$firstname)) {
+      $firstnameErr = "Only letters and white space allowed";
     }
   }
-
-  if (empty($_POST["email"])) {
-    $emailErr = "Email is required";
+  if (empty($_POST["lastname"])) {
+    $lastnameErr = "Last name is required";
   } else {
-    $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format";
+    $lastname = test_input($_POST["lastname"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$lastname)) {
+      $lastnameErr = "Only letters and white space allowed";
     }
   }
-
-  if (empty($_POST["website"])) {
-    $website = "";
+  if (empty($_POST["dob"])) {
+    $dobErr = "Date of Birth is required";
   } else {
-    $website = test_input($_POST["website"]);
-    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-      $websiteErr = "Invalid URL";
+    $dob = test_input($_POST["dob"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$dob)) {
+      $dobErr = "DOB must be in the format of yyyy-mm-dd";
     }
   }
-
-  if (empty($_POST["comment"])) {
-    $comment = "";
+  if (empty($_POST["partysize"])) {
+    $partysizeErr = "Party size is required";
   } else {
-    $comment = test_input($_POST["comment"]);
+    $partysize = test_input($_POST["partysize"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[0-9]*$/",$partysize)) {
+      $partysizeErr = "Party size must be a number";
+    }
   }
-
-  if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
+  if (empty($_POST["checkin"])) {
+    $checkinErr = "Check in date is required";
   } else {
-    $gender = test_input($_POST["gender"]);
+    $checkin = test_input($_POST["checkin"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$checkin)) {
+      $checkinErr = "Check in date must be in the format of yyyy-mm-dd";
+    }
+  }
+  if (empty($_POST["checkout"])) {
+    $checkoutErr = "Check out date is required";
+  } else {
+    $checkout = test_input($_POST["checkout"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$checkout)) {
+      $checkoutErr = "Check out date must be in the format of yyyy-mm-dd";
+    }
+  }
+  if (empty($_POST["roomnum"])) {
+    $roomnumErr = "Room number is required";
+  } else {
+    $roomnum = test_input($_POST["roomnum"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[0-9]*$/",$roomnum)) {
+      $roomnumErr = "Room number must be a number";
+    }
   }
 }
 
@@ -84,39 +91,89 @@ function test_input($data) {
 ?>
 
 <h2>Make a Reservation</h2>
+<h4>Guest Information</h4>
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  Name: <input type="text" name="name" value="<?php echo $name;?>">
-  <span class="error">* <?php echo $nameErr;?></span>
+  First name: <input type="text" name="firstname" value="<?php echo $firstname;?>">
+  <span class="error">* <?php echo $firstnameErr;?></span>
   <br><br>
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  <span class="error">* <?php echo $emailErr;?></span>
+  Last name: <input type="text" name="lastname" value="<?php echo $lastname;?>">
+  <span class="error">* <?php echo $lastnameErr;?></span>
   <br><br>
-  Website: <input type="text" name="website" value="<?php echo $website;?>">
-  <span class="error"><?php echo $websiteErr;?></span>
+  DOB: <input type="text" name="dob" value="<?php echo $dob;?>">
+  <span class="error">* <?php echo $dobErr;?></span>
   <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
+  Party Size: <input type="text" name="partysize" value="<?php echo $partysize;?>">
+  <span class="error">* <?php echo $partysizeErr;?></span>
   <br><br>
-  Gender:
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
-  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other
-  <span class="error">* <?php echo $genderErr;?></span>
+  <h4>Reservation Information</h4>
+  Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
+  <span class="error">* <?php echo $checkinErr;?></span>
+  <br><br>
+  Check Out: <input type="text" name="checkout" value="<?php echo $checkout;?>">
+  <span class="error">* <?php echo $checkoutErr;?></span>
+  <br><br>
+  Room Num: <input type="text" name="roomnum" value="<?php echo $roomnum;?>">
+  <span class="error">* <?php echo $roomnumErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">
 </form>
 
 <?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $website;
-echo "<br>";
-echo $comment;
-echo "<br>";
-echo $gender;
+// echo "<h2>Your Input:</h2>";
+// echo $firstname;
+// echo "<br>";
+// echo $lastname;
+// echo "<br>";
+// echo $dob;
+// echo "<br>";
+// echo $partysize;
+// echo "<br>";
+// echo $checkin;
+// echo "<br>";
+// echo $checkout;
+// echo "<br>";
+// echo $roomnum;
+// echo "<br>";
+// echo "<br>";
+
+$first = (string)$firstname;
+$guest = "INSERT INTO guest (first_name, last_name, DOB, party_size) VALUES ('$firstname', '$lastname', '$dob', '$partysize')";
+// $reservation = "INSERT INTO reserve (first_name, last_name, email) VALUES ('Peter', 'Parker', 'peterparker@mail.com')";
+if(mysqli_query($mysqli, $guest)){
+    echo "Records inserted successfully.";
+} else{
+    echo "ERROR: Could not able to execute $guest. " . mysqli_error($mysqli);
+}
+$guest_id = mysqli_fetch_assoc($mysqli->query("SELECT guest_id FROM guest WHERE first_name = '$firstname' and last_name = '$lastname' and DOB = '$dob'"));
+$id = $guest_id['guest_id'];
+$reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id) VALUES ('$checkin', '$checkout', '$roomnum', '$id')";
+
+if(mysqli_query($mysqli, $reservation)){
+    echo "Records inserted successfully.";
+} else{
+    echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
+}
+
+
+
+
+// $result = $mysqli->query("SELECT * FROM guest WHERE first_name = 'Mark'");
+//
+// while ($row = mysqli_fetch_assoc($result)) {
+//   echo "Guest ID: ";
+//   echo $row['guest_id'];
+//   echo "<br>";
+//   echo "Last Name: ";
+//   echo $row['last_name'];
+//   echo "<br>";
+//   echo "First Name: ";
+//   echo $row['first_name'];
+//   echo "<br>";
+//   echo "DOB: ";
+//   echo $row['DOB'];
+//   echo "<br>";
+// }
 ?>
 
 </body>

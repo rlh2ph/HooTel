@@ -8,6 +8,25 @@
 <body>
 
 <?php
+  $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
+  $result = $mysqli->query("SELECT * FROM guest WHERE last_name = 'Floryan'");
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo "Guest ID: ";
+    echo $row['guest_id'];
+    echo "<br>";
+    echo "Last Name: ";
+    echo $row['last_name'];
+    echo "<br>";
+    echo "First Name: ";
+    echo $row['first_name'];
+    echo "<br>";
+    echo "DOB: ";
+    echo $row['DOB'];
+    echo "<br>";
+  }
+?>
+
+<?php
 // define variables and set to empty values
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $website = "";

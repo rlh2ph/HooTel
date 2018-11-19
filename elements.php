@@ -37,7 +37,7 @@
                     <nav class="classy-navbar justify-content-between" id="palatinNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="index.php" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -55,61 +55,61 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li class="active"><a href="index.php">Home</a></li>
+                                    <li><a href="about-us.php">About Us</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="rooms.html">Rooms</a></li>
-                                            <li><a href="blog.html">News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
+                                            <li><a href="index.php">Home</a></li>
+                                            <li><a href="about-us.php">About Us</a></li>
+                                            <li><a href="services.php">Services</a></li>
+                                            <li><a href="rooms.php">Rooms</a></li>
+                                            <li><a href="blog.php">News</a></li>
+                                            <li><a href="contact.php">Contact</a></li>
+                                            <li><a href="elements.php">Elements</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Mega Menu</a>
                                         <div class="megamenu">
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="services.php">Services</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
                                 </ul>
 
                                 <!-- Button -->
@@ -485,7 +485,7 @@
                 </div>
 
                 <div class="col-12 mb-100">
-                    <div class="row">                   
+                    <div class="row">
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -493,7 +493,7 @@
                                 <span>icon-wallet</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -501,7 +501,7 @@
                                 <span>icon-trekking</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -509,7 +509,7 @@
                                 <span>icon-boarding-pass</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -517,7 +517,7 @@
                                 <span>icon-train</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -525,7 +525,7 @@
                                 <span>icon-binoculars</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -533,7 +533,7 @@
                                 <span>icon-swimming-pool</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -541,7 +541,7 @@
                                 <span>icon-sunset</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -549,7 +549,7 @@
                                 <span>icon-sunglasses</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -557,7 +557,7 @@
                                 <span>icon-suitcase</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -565,7 +565,7 @@
                                 <span>icon-goggle</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -573,7 +573,7 @@
                                 <span>icon-restaurant</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -581,7 +581,7 @@
                                 <span>icon-postcard</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -589,7 +589,7 @@
                                 <span>icon-adaptor</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -597,7 +597,7 @@
                                 <span>icon-photo</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -605,7 +605,7 @@
                                 <span>icon-passport</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -613,7 +613,7 @@
                                 <span>icon-navigation</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -621,7 +621,7 @@
                                 <span>icon-mountain</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -629,7 +629,7 @@
                                 <span>icon-map-1</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -637,7 +637,7 @@
                                 <span>icon-limousine</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -645,7 +645,7 @@
                                 <span>icon-landmark</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -653,7 +653,7 @@
                                 <span>icon-resort</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -661,7 +661,7 @@
                                 <span>icon-sign</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -669,7 +669,7 @@
                                 <span>icon-flip-flops</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -677,7 +677,7 @@
                                 <span>icon-map</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -685,7 +685,7 @@
                                 <span>icon-take-off</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -693,7 +693,7 @@
                                 <span>icon-boat</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -701,7 +701,7 @@
                                 <span>icon-compass</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -709,7 +709,7 @@
                                 <span>icon-cocktail-1</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -717,7 +717,7 @@
                                 <span>icon-cocktail</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -725,7 +725,7 @@
                                 <span>icon-credit-card</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -733,7 +733,7 @@
                                 <span>icon-camera</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -741,7 +741,7 @@
                                 <span>icon-calendar</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -749,7 +749,7 @@
                                 <span>icon-island</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -757,7 +757,7 @@
                                 <span>icon-beach</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">
@@ -765,7 +765,7 @@
                                 <span>icon-around</span>
                             </div>
                         </div>
-                        
+
                         <!-- Single Icon -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="single-icon mb-30">

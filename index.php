@@ -37,7 +37,7 @@
                     <nav class="classy-navbar justify-content-between" id="palatinNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand">The HooTel</a>
+                        <a href="index.php" class="nav-brand">The HooTel</a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -54,67 +54,67 @@
 
                             <!-- Nav Start -->
                             <div class="classynav">
-                                <ul>
-                                    <li class="active"><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                <!-- <ul>
+                                    <li class="active"><a href="index.php">Home</a></li>
+                                    <li><a href="about-us.php">About Us</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="rooms.html">Rooms</a></li>
-                                            <li><a href="blog.html">News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
+                                            <li><a href="index.php">Home</a></li>
+                                            <li><a href="about-us.php">About Us</a></li>
+                                            <li><a href="services.php">Services</a></li>
+                                            <li><a href="rooms.php">Rooms</a></li>
+                                            <li><a href="blog.php">News</a></li>
+                                            <li><a href="contact.php">Contact</a></li>
+                                            <li><a href="elements.php">Elements</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Mega Menu</a>
                                         <div class="megamenu">
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
+                                    <li><a href="services.php">Services</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
+                                </ul> -->
 
                                 <!-- Button -->
                                 <div class="menu-btn">
-                                    <a href="#" class="btn palatin-btn">Make a Reservation</a>
+                                    <a href="reservation.php" class="btn palatin-btn">Make a Reservation</a>
                                 </div>
 
                             </div>
@@ -430,9 +430,9 @@
                 <h2>Contact Info</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
             </div>
-            <h4 class="wow fadeInUp" data-wow-delay="300ms">Los Angeles 1481 Creekside Lane Avila Beach, CA 931</h4>
-            <h5 class="wow fadeInUp" data-wow-delay="400ms">+53 345 7953 32453</h5>
-            <h5 class="wow fadeInUp" data-wow-delay="500ms">yourmail@gmail.com</h5>
+            <h4 class="wow fadeInUp" data-wow-delay="300ms">1308 Wertland St. Charlottesville, VA 22903</h4>
+            <h5 class="wow fadeInUp" data-wow-delay="400ms">+1 703 599 2298</h5>
+            <h5 class="wow fadeInUp" data-wow-delay="500ms">amb6sg@virginia.edu</h5>
             <!-- Social Info -->
             <div class="social-info mt-50 wow fadeInUp" data-wow-delay="600ms">
                 <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>

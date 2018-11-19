@@ -37,7 +37,7 @@
                     <nav class="classy-navbar justify-content-between" id="palatinNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="index.php" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -55,61 +55,61 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li class="active"><a href="index.php">Home</a></li>
+                                    <li><a href="about-us.php">About Us</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="services.html">Services</a></li>
-                                            <li><a href="rooms.html">Rooms</a></li>
-                                            <li><a href="blog.html">News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
+                                            <li><a href="index.php">Home</a></li>
+                                            <li><a href="about-us.php">About Us</a></li>
+                                            <li><a href="services.php">Services</a></li>
+                                            <li><a href="rooms.php">Rooms</a></li>
+                                            <li><a href="blog.php">News</a></li>
+                                            <li><a href="contact.php">Contact</a></li>
+                                            <li><a href="elements.php">Elements</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Mega Menu</a>
                                         <div class="megamenu">
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                             <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="services.html">Services</a></li>
-                                                <li><a href="rooms.html">Rooms</a></li>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
+                                                <li><a href="index.php">Home</a></li>
+                                                <li><a href="about-us.php">About Us</a></li>
+                                                <li><a href="services.php">Services</a></li>
+                                                <li><a href="rooms.php">Rooms</a></li>
+                                                <li><a href="blog.php">News</a></li>
+                                                <li><a href="contact.php">Contact</a></li>
+                                                <li><a href="elements.php">Elements</a></li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li class="active"><a href="contact.html">Contact</a></li>
+                                    <li><a href="services.php">Services</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
                                 </ul>
 
                                 <!-- Button -->
@@ -128,9 +128,9 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/bg-8.jpg);">
+    <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/bg-7.jpg);">
         <div class="bradcumbContent">
-            <h2>Contact</h2>
+            <h2>News</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -205,141 +205,97 @@
     </div>
     <!-- ##### Book Now Area End ##### -->
 
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-information-area">
-        <div class="container">
-            <div class="row">
-
-                <!-- Single Contact Information -->
-                <div class="col-12 col-lg-4">
-                    <div class="single-contact-information mb-100">
-                        <div class="section-text">
-                            <h3>Ibiza</h3>
-                            <p>Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum.</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>Address</p>
-                            <p>1481 Creekside Lane <br>Avila Beach, CA 931</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>Phone</p>
-                            <p>+36 345 7953 4994</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>E-mail</p>
-                            <p>yourmail@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Contact Information -->
-                <div class="col-12 col-lg-4">
-                    <div class="single-contact-information mb-100">
-                        <div class="section-text">
-                            <h3>Los Angeles</h3>
-                            <p>Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Integer tempus ligula sem.</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>Address</p>
-                            <p>245 Principe Lane <br>Avila Beach, Spain</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>Phone</p>
-                            <p>+36 345 7953 4994</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>E-mail</p>
-                            <p>yourmail@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Contact Information -->
-                <div class="col-12 col-lg-4">
-                    <div class="single-contact-information mb-100">
-                        <div class="section-text">
-                            <h3>Dubai</h3>
-                            <p>Fusce blandit consequat elit non egestas. Donec tortor odio, consectetur eu justo ut.</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>Address</p>
-                            <p>889 Creekside Lane <br>Avila Beach, Dubai</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>Phone</p>
-                            <p>+77 345 7953 2406</p>
-                        </div>
-                        <!-- Single Contact Information -->
-                        <div class="contact-content d-flex">
-                            <p>E-mail</p>
-                            <p>yourmail@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- ##### Contact Area End ##### -->
-
-    <!-- ##### Contact Form Area Start ##### -->
-    <section class="contact-form-area mb-100">
+    <!-- ##### Blog Area Start ##### -->
+    <div class="blog-area section-padding-0-100">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-heading">
-                        <div class="line-"></div>
-                        <h2>Get in touch</h2>
-                    </div>
-                </div>
-            </div>
+                    <div class="palatin-blog-posts">
 
-            <div class="row">
-                <div class="col-12">
-                    <!-- Contact Form -->
-                    <form action="#" method="post">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" name="text" placeholder="Your Name">
+                        <!-- ##### Single Blog Post ##### -->
+                        <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
+                            <!-- Post Thumb -->
+                            <div class="blog-post-thumb">
+                                <img src="img/blog-img/1.jpg" alt="">
                             </div>
-                            <div class="col-lg-4">
-                                <input type="email" class="form-control" name="email" placeholder="E-mail">
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject">
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn palatin-btn mt-50">Send Message</button>
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <!-- Post Date-->
+                                <a href="#" class="post-date btn palatin-btn">June 25, 2018</a>
+                                <!-- Post Title -->
+                                <a href="#" class="post-title">The program for the Summer of 2018</a>
+                                <!-- Post Meta -->
+                                <div class="post-meta d-flex justify-content-center">
+                                    <!-- Catagory -->
+                                    <a href="#" class="post-catagory">In Hotel</a>
+                                    <!-- Comments -->
+                                    <a href="#" class="post-comments">3 comments</a>
+                                </div>
+                                <!-- Post Excerpt -->
+                                <p>Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Integer tempus ligula sem, id feugiat quam egestas et. Donec porttitor varius diam in vulputate. Fusce blandit consequat elit non egestas. Donec tortor odio, consectetur eu justo ut, auctor</p>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Contact Form Area End ##### -->
 
-    <!-- ##### Google Maps ##### -->
-    <div class="map-area mb-100">
-        <div class="container">
-            <div class="row">
+                        <!-- ##### Single Blog Post ##### -->
+                        <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="300ms">
+                            <!-- Post Thumb -->
+                            <div class="blog-post-thumb">
+                                <img src="img/blog-img/2.jpg" alt="">
+                            </div>
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <!-- Post Date-->
+                                <a href="#" class="post-date btn palatin-btn">June 25, 2018</a>
+                                <!-- Post Title -->
+                                <a href="#" class="post-title">June opening for our Pool Bar</a>
+                                <!-- Post Meta -->
+                                <div class="post-meta d-flex justify-content-center">
+                                    <!-- Catagory -->
+                                    <a href="#" class="post-catagory">In Hotel</a>
+                                    <!-- Comments -->
+                                    <a href="#" class="post-comments">3 comments</a>
+                                </div>
+                                <!-- Post Excerpt -->
+                                <p>Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Integer tempus ligula sem, id feugiat quam egestas et. Donec porttitor varius diam in vulputate. Fusce blandit consequat elit non egestas. Donec tortor odio, consectetur eu justo ut, auctor</p>
+                            </div>
+                        </div>
+
+                        <!-- ##### Single Blog Post ##### -->
+                        <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="500ms">
+                            <!-- Post Thumb -->
+                            <div class="blog-post-thumb">
+                                <img src="img/blog-img/3.jpg" alt="">
+                            </div>
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <!-- Post Date-->
+                                <a href="#" class="post-date btn palatin-btn">June 25, 2018</a>
+                                <!-- Post Title -->
+                                <a href="#" class="post-title">3 Tip for the perfect vacation</a>
+                                <!-- Post Meta -->
+                                <div class="post-meta d-flex justify-content-center">
+                                    <!-- Catagory -->
+                                    <a href="#" class="post-catagory">In Hotel</a>
+                                    <!-- Comments -->
+                                    <a href="#" class="post-comments">3 comments</a>
+                                </div>
+                                <!-- Post Excerpt -->
+                                <p>Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. Integer tempus ligula sem, id feugiat quam egestas et. Donec porttitor varius diam in vulputate. Fusce blandit consequat elit non egestas. Donec tortor odio, consectetur eu justo ut, auctor</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
                 <div class="col-12">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22236.40558254599!2d-118.25292394686001!3d34.057682914027104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2z4Kay4Ka4IOCmj-CmnuCnjeCmnOCnh-CmsuCnh-CmuCwg4KaV4KeN4Kav4Ka-4Kay4Ka_4Kar4KeL4Kaw4KeN4Kao4Ka_4Kav4Ka84Ka-LCDgpq7gpr7gprDgp43gppXgpr_gpqgg4Kav4KeB4KaV4KeN4Kak4Kaw4Ka-4Ka34KeN4Kaf4KeN4Kaw!5e0!3m2!1sbn!2sbd!4v1532328708137" allowfullscreen></iframe>
+                    <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="700ms">
+                        <a href="#" class="btn palatin-btn">Load More</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- ##### Blog Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

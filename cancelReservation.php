@@ -12,6 +12,8 @@ $conn = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbprojec
 ?>
 
 <?php
+
+$Err = "";
 $reservationNumber = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
   if (empty($_POST["res_id"])) {
@@ -32,27 +34,34 @@ function test_input($data) {
 }
 ?>
 
-//<?php
-//echo "<h2>Your input<h2>";
-//echo $reservationNumber;
-//$sql = "DELETE FROM `am7eu_dbproject`.`reserve` WHERE `reserve`.`res_id` = $reservationNumber";
-
-//if ($conn->query($sql) === TRUE) {
-//    echo "Record deleted successfully";
-//} else {
-//    echo "Error deleting record: " . $conn->error;
-//}
-
-//$conn->close();
-//?>
+<!-- <h2>Your input<h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  Reservation Number: <input type = "text" name = "res_id" value = "<?php echo $res_id;?>">
+  <span class = "error">* <?php echo $Err;?></span>span><br><br>
+</form> -->
 
 <h2>Cancel Reservation<h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  Reservation Number: <input type="text" name="res_num" value="<?php echo $reservationNumber;?>">
+  Reservation Number: <input type="text" name="res_id" value="<?php echo $reservationNumber;?>">
   <span class="error">* <?php echo $reservationNumber;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">
 </form>
+
+<?php
+
+$reserve = "DELETE FROM reserve WHERE res_id = '$reservationNumber'";
+
+if ($conn->query($reserve) === TRUE) {
+    echo "Record deleted successfully";
+} else {
+    echo "Error deleting record: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+
 
 </body>
 </html>

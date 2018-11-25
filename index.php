@@ -114,7 +114,7 @@
 
                                 <!-- Button -->
                                 <div class="menu-btn">
-                                    <a href="reservation.php" class="btn palatin-btn">Make a Reservation</a>
+                                    <a href="guestchoice.php" class="btn palatin-btn">Make a Reservation</a>
                                 </div>
 
                             </div>

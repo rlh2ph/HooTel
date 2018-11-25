@@ -122,18 +122,18 @@ function test_input($data) {
 <?php
 $state = 0;
 foreach($_POST as $key => $value) {
-  if(empty($value)) {
+  if(!empty($value)) {
+    
+  }
+  else{
     echo "Error, not all values given.";
     $state += 1;
     echo $state;
     die;
   }
-  else{
-
-  }
 
 }
-echo $state;
+//echo $state;
 if ($state == 0){
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
   {

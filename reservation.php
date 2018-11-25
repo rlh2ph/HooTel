@@ -120,41 +120,47 @@ function test_input($data) {
 </form>
 
 <?php
-// echo "<h2>Your Input:</h2>";
-// echo $firstname;
-// echo "<br>";
-// echo $lastname;
-// echo "<br>";
-// echo $dob;
-// echo "<br>";
-// echo $partysize;
-// echo "<br>";
-// echo $checkin;
-// echo "<br>";
-// echo $checkout;
-// echo "<br>";
-// echo $roomnum;
-// echo "<br>";
-// echo "<br>";
+$state = 0;
+foreach($_POST as $key => $value) {
+  if(empty($value)) {
+    echo "Error, not all values given.";
+    $state += 1;
+    echo $state;
+    die;
+  }
+  else{
 
-$first = (string)$firstname;
-$guest = "INSERT INTO guest (first_name, last_name, DOB, party_size) VALUES ('$firstname', '$lastname', '$dob', '$partysize')";
-// $reservation = "INSERT INTO reserve (first_name, last_name, email) VALUES ('Peter', 'Parker', 'peterparker@mail.com')";
-if(mysqli_query($mysqli, $guest)){
-    echo "Records inserted successfully.";
-} else{
-    echo "ERROR: Could not able to execute $guest. " . mysqli_error($mysqli);
+  }
+
 }
-$guest_id = mysqli_fetch_assoc($mysqli->query("SELECT guest_id FROM guest WHERE first_name = '$firstname' and last_name = '$lastname' and DOB = '$dob'"));
-$id = $guest_id['guest_id'];
-$reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id) VALUES ('$checkin', '$checkout', '$roomnum', '$id')";
-
-if(mysqli_query($mysqli, $reservation)){
-    echo "Records inserted successfully.";
-} else{
-    echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
+echo $state;
+if ($state == 0){
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
+  {
+      guestInfo($firstname,$lastname,$dob,$partysize,$mysqli);
+      reservationInfo($mysqli,$firstname,$lastname,$dob,$checkin,$checkout,$roomnum);
+  }
 }
+function guestInfo($firstname,$lastname,$dob,$partysize,$mysqli){
+  $guest = "INSERT INTO guest (first_name, last_name, DOB, party_size) VALUES ('$firstname', '$lastname', '$dob', '$partysize')";
+  // $reservation = "INSERT INTO reserve (first_name, last_name, email) VALUES ('Peter', 'Parker', 'peterparker@mail.com')";
+  if(mysqli_query($mysqli, $guest)){
+      echo "Records inserted successfully.";
+  } else{
+      echo "ERROR: Could not able to execute $guest. " . mysqli_error($mysqli);
+  }
+}
+function reservationInfo($mysqli,$firstname,$lastname,$dob,$checkin,$checkout,$roomnum){
+  $guest_id = mysqli_fetch_assoc($mysqli->query("SELECT guest_id FROM guest WHERE first_name = '$firstname' and last_name = '$lastname' and DOB = '$dob'"));
+  $id = $guest_id['guest_id'];
+  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id) VALUES ('$checkin', '$checkout', '$roomnum', '$id')";
 
+  if(mysqli_query($mysqli, $reservation)){
+      echo "Records inserted successfully.";
+  } else{
+      echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
+  }
+}
 
 
 

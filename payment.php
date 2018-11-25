@@ -7,22 +7,7 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 
-  <h2>Search by Room Number<h2>
-  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    Last name: <input type="text" name="lastname" value="<?php echo $lastname;?>">
-    <span class="error">* <?php echo $lastnameErr;?></span>
-    <br><br>
-    DOB: <input type="text" name="dob" value="<?php echo $dob;?>">
-    <span class="error">* <?php echo $dobErr;?></span>
-    <br><br>
-    <input type="submit" name="submit" value="Submit">
-
-  </form>
-
-
-=======
 <?php
   $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
@@ -119,7 +104,6 @@ if(mysqli_query($mysqli, $payment)){
     echo "ERROR: Could not able to execute $payment. " . mysqli_error($mysqli);
 }
 ?>
->>>>>>> c79abbc9dd9be9ca7ccbe6b59f94061bd638be27
 
 </body>
 </html>

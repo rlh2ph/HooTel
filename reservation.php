@@ -125,7 +125,7 @@ foreach($_POST as $key => $value) {
   if(empty($value)) {
     echo "Error, not all values given.";
     $state += 1;
-    echo $state;
+    //echo $state;
     die;
   }
   else{
@@ -133,10 +133,9 @@ foreach($_POST as $key => $value) {
   }
 
 }
-echo $state;
+//echo $state;
 if ($state == 0){
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
-  {
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
       guestInfo($firstname,$lastname,$dob,$partysize,$mysqli);
       reservationInfo($mysqli,$firstname,$lastname,$dob,$checkin,$checkout,$roomnum);
   }
@@ -145,7 +144,7 @@ function guestInfo($firstname,$lastname,$dob,$partysize,$mysqli){
   $guest = "INSERT INTO guest (first_name, last_name, DOB, party_size) VALUES ('$firstname', '$lastname', '$dob', '$partysize')";
   // $reservation = "INSERT INTO reserve (first_name, last_name, email) VALUES ('Peter', 'Parker', 'peterparker@mail.com')";
   if(mysqli_query($mysqli, $guest)){
-      echo "Records inserted successfully.";
+      echo "Guest Records inserted successfully.";
   } else{
       echo "ERROR: Could not able to execute $guest. " . mysqli_error($mysqli);
   }
@@ -156,7 +155,7 @@ function reservationInfo($mysqli,$firstname,$lastname,$dob,$checkin,$checkout,$r
   $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id) VALUES ('$checkin', '$checkout', '$roomnum', '$id')";
 
   if(mysqli_query($mysqli, $reservation)){
-      echo "Records inserted successfully.";
+      echo "Reservation Records inserted successfully.";
   } else{
       echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
   }

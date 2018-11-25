@@ -46,7 +46,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 {
     submit($reservationNumber,$conn);
 }
-
 function submit($reservationNumber,$conn){
   $reserve = "DELETE FROM reserve WHERE res_id = '$reservationNumber'";
 
@@ -55,7 +54,6 @@ function submit($reservationNumber,$conn){
   } else {
       echo "Error deleting record: " . $conn->error;
   }
-
   $conn->close();
 }
 ?>

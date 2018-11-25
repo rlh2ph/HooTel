@@ -38,14 +38,17 @@ function test_input($data) {
   <input type="submit" name="submit" value="Submit">
 </form>
 
-<?php
-echo "<h2>Your input<h2>";
-echo $roomNumber;
-?>
 
 <?php
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
+{
+    submit($roomNumber,$mysqli);
+}
+
+function submit($roomNumber,$mysqli){
+  echo "<h2>Room searched: <h2>";
+  echo $roomNumber;
   $result = $mysqli->query("SELECT * FROM `reserve` WHERE `room_num` = $roomNumber LIMIT 0, 30 ");
-
   while ($row = mysqli_fetch_assoc($result)) {
     $space = " ";
     echo "<br>";
@@ -54,8 +57,9 @@ echo $roomNumber;
     echo "<br>";
     $info = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `guest` WHERE `guest_id` = $id"));
     echo $info['first_name'] . $space . $info['last_name'];
-
   }
+}
+
 ?>
 
 </body>

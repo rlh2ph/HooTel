@@ -98,26 +98,56 @@ function test_input($data) {
 </form>
 
 <?php
+$state = 0;
+foreach($_POST as $key => $value) {
+  if(!empty($value)) {
 
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
-{
-    $id = $_SESSION['guest_id'];
-    $in = $checkin;
-    $out = $checkout;
-    $room = $roomnum;
-    submit($in, $out, $room, $id, $mysqli);
+  }
+  else{
+    echo "Error, not all values given.";
+    $state += 1;
+    //echo $state;
+    die;
+  }
+
 }
-function submit($checkin, $checkout, $roomnum, $id, $mysqli){
+//echo $state;
+if ($state == 0){
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
+      reservationInfo($mysqli,$checkin,$checkout,$roomnum);
+  }
+}
+
+
+function reservationInfo($mysqli,$checkin,$checkout,$roomnum){
   $id = $_SESSION['guest_id'];
   $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id) VALUES ('$checkin', '$checkout', '$roomnum', '$id')";
 
   if(mysqli_query($mysqli, $reservation)){
-      echo "Records inserted successfully.";
-      $_SESSION['reservation_id'] = $mysqli->insert_id;
+      echo "Reservation Records inserted successfully.";
   } else{
       echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
   }
 }
+
+
+
+// $result = $mysqli->query("SELECT * FROM guest WHERE first_name = 'Mark'");
+//
+// while ($row = mysqli_fetch_assoc($result)) {
+//   echo "Guest ID: ";
+//   echo $row['guest_id'];
+//   echo "<br>";
+//   echo "Last Name: ";
+//   echo $row['last_name'];
+//   echo "<br>";
+//   echo "First Name: ";
+//   echo $row['first_name'];
+//   echo "<br>";
+//   echo "DOB: ";
+//   echo $row['DOB'];
+//   echo "<br>";
+// }
 ?>
 
 

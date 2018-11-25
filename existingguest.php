@@ -19,10 +19,37 @@
 
 <?php
 // define variables and set to empty values
-$partysizeErr = $checkinErr = $checkoutErr = $roomnumErr = "";
-$partysize = $checkin = $checkout = $roomnum = "";
+$firstnameErr = $lastnameErr = $dobErr = $partysizeErr = $checkinErr = $checkoutErr = $roomnumErr = "";
+$firstname = $lastname = $dob = $partysize = $checkin = $checkout = $roomnum = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["firstname"])) {
+    $firstnameErr = "First name is required";
+  } else {
+    $firstname = test_input($_POST["firstname"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$firstname)) {
+      $firstnameErr = "Only letters and white space allowed";
+    }
+  }
+  if (empty($_POST["lastname"])) {
+    $lastnameErr = "Last name is required";
+  } else {
+    $lastname = test_input($_POST["lastname"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$lastname)) {
+      $lastnameErr = "Only letters and white space allowed";
+    }
+  }
+  if (empty($_POST["dob"])) {
+    $dobErr = "Date of Birth is required";
+  } else {
+    $dob = test_input($_POST["dob"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$dob)) {
+      $dobErr = "DOB must be in the format of yyyy-mm-dd";
+    }
+  }
   if (empty($_POST["partysize"])) {
     $partysizeErr = "Party size is required";
   } else {
@@ -69,54 +96,26 @@ function test_input($data) {
 }
 ?>
 
-<h2>Make a Reservation</h2>
-<p><span class="error">* required field</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <h4>Reservation Information</h4>
-  Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
-  <span class="error">* <?php echo $checkinErr;?></span>
-  <br><br>
-  Check Out: <input type="text" name="checkout" value="<?php echo $checkout;?>">
-  <span class="error">* <?php echo $checkoutErr;?></span>
-  <br><br>
+<h2>Existing Guests</h2>
+<form action='reservation.php' method="post">
   <?php
-  $sql=mysqli_query($mysqli, "SELECT * FROM room WHERE available=1");
+  $sql=mysqli_query($mysqli, "SELECT * FROM guest");
   if(mysqli_num_rows($sql)){
-  $select= 'Room #: <select name="roomnum">';
+  $select= '<select name="guest">';
   while($rs=mysqli_fetch_array($sql)){
-        $select.='<option value="'.$rs['room_num'].'">'.$rs['room_num'].'</option>';
+        $select.='<option value="'.$rs['guest_id'].'">'.$rs['first_name'].' '.$rs['last_name'].' -- '.$rs['DOB'].'</option>';
     }
   }
   $select.='</select>';
   echo $select;
   ?>
-</br><br>
-  Party Size: <input type="text" name="partysize" value="<?php echo $partysize;?>">
-  <span class="error">* <?php echo $partysizeErr;?></span>
-  <br><br>
+  <br>
   <input type="submit" name="submit" value="Submit">
 </form>
 
 <?php
-
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
-{
-    $id = $_SESSION['guest_id'];
-    $in = $checkin;
-    $out = $checkout;
-    $room = $roomnum;
-    submit($in, $out, $room, $id, $mysqli);
-}
-function submit($checkin, $checkout, $roomnum, $id, $mysqli){
-  $id = $_SESSION['guest_id'];
-  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id) VALUES ('$checkin', '$checkout', '$roomnum', '$id')";
-
-  if(mysqli_query($mysqli, $reservation)){
-      echo "Records inserted successfully.";
-      $_SESSION['reservation_id'] = $mysqli->insert_id;
-  } else{
-      echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
-  }
+if (isset($_POST['submit'])) {
+     $_SESSION['guest_id'] = $_POST['guest'];
 }
 ?>
 

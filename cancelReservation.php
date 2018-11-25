@@ -10,9 +10,7 @@
 <?php
 $conn = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
-
 <?php
-
 $Err = "";
 $reservationNumber = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -34,12 +32,6 @@ function test_input($data) {
 }
 ?>
 
-<!-- <h2>Your input<h2>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  Reservation Number: <input type = "text" name = "res_id" value = "<?php echo $res_id;?>">
-  <span class = "error">* <?php echo $Err;?></span>span><br><br>
-</form> -->
-
 <h2>Cancel Reservation<h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Reservation Number: <input type="text" name="res_id" value="<?php echo $reservationNumber;?>">
@@ -50,18 +42,23 @@ function test_input($data) {
 
 <?php
 
-$reserve = "DELETE FROM reserve WHERE res_id = '$reservationNumber'";
-
-if ($conn->query($reserve) === TRUE) {
-    echo "Record deleted successfully";
-} else {
-    echo "Error deleting record: " . $conn->error;
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
+{
+    submit($reservationNumber,$conn);
 }
 
-$conn->close();
+function submit($reservationNumber,$conn){
+  $reserve = "DELETE FROM reserve WHERE res_id = '$reservationNumber'";
+
+  if ($conn->query($reserve) === TRUE) {
+      echo "Record deleted successfully";
+  } else {
+      echo "Error deleting record: " . $conn->error;
+  }
+
+  $conn->close();
+}
 ?>
-
-
 
 </body>
 </html>

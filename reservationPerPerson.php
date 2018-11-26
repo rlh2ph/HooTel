@@ -24,7 +24,7 @@ function test_input($data) {
 ?>
 <h2>Search by Last Name<h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  lastName: <input type="text" name="last_name" value="<?php echo $lastName;?>">
+  Last Name: <input type="text" name="last_name" value="<?php echo $lastName;?>">
   <input type="submit" name="submit" value="Submit">
 </form>
 
@@ -36,8 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 }
 
 function submit($lastName,$mysqli){
-  echo "<h2>Last name searched: <h2>";
-  echo $lastName;
+  echo "<h2>Last name searched: $lastName<h2>";
   $query_string = "SELECT * FROM `guest` WHERE `last_name` = '$lastName' ";
   $result = $mysqli->query($query_string);
   if(!$result){
@@ -46,13 +45,10 @@ function submit($lastName,$mysqli){
 
 
   while ($row = mysqli_fetch_assoc($result)) {
-    $space = " ";
-    echo "<br>";
     $guest_id = $row['guest_id'];
     $guest_first_name = $row['first_name'];
     $guest_last_name = $row['last_name'];
     //echo "Guest ID: " . $guest_id;
-    echo "<br>";
     echo $guest_first_name . " " . $guest_last_name;
 
     $room_num = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `reserve` WHERE `guest_id` = $guest_id"));
@@ -66,7 +62,7 @@ function submit($lastName,$mysqli){
     //echo "<br>";
     //echo "Check-Out: " . $check_out;
 
-    $room_type = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `room` WHERE `room_num` = $room_num"));
+    $room_type = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `room` WHERE `room_num` = '$room_num'"));
     //echo "<br>";
     $room_type = $room_type['type_id'];
     //echo "Room Type ID: " . $room_type;

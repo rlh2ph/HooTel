@@ -1,0 +1,122 @@
+html {
+  overflow-y: scroll;
+}
+/* Navbar link colors when scrolled down */
+#mainNav.navbar-shrink .navbar-nav>li.nav-item>a.nav-link{
+	color: #f05f40 !important;
+}
+#mainNav.navbar-shrink .navbar-nav>li.nav-item>a.nav-link:hover{
+	color: #eb3812 !important;
+}
+#mainNav.navbar-shrink .navbar-nav>li.nav-item>a.btn-solid-color>span, #mainNav.navbar-shrink .navbar-nav>li.nav-item>a.btn-solid-color>span:focus{
+	color: #ffffff !important;
+}
+/* Color of Signup button */
+#mainNav.navbar-shrink .navbar-nav>li.nav-item>a.btn-outline>span, #mainNav.navbar-shrink .navbar-nav>li.nav-item>a.btn-outline>span:focus{
+	border: 1px solid #f05f40;
+	border-radius: 10px;
+}
+@media (max-width: 991px){
+	#mainNav.navbar-expand-lg .navbar-nav>li.nav-item>a.btn-outline>span{
+		border: 1px solid #ffffff;
+		border-radius: 10px;
+		color: #000000;
+	}
+}
+@media (max-width: 991px){
+	#mainNav.navbar-expand-lg .navbar-nav>li.nav-item>a.btn-outline>span:hover{
+		color: #f05f40;
+	}
+}
+@media (max-width: 991px){
+	#mainNav.navbar-expand-lg .navbar-nav>li.nav-item>a.btn-outline>span:focus{
+		border: 1px solid #ffffff;
+		border-radius: 10px;
+	}
+}
+/*Color of other nav links on reactive/scroll*/
+@media (max-width: 991px){
+	#mainNav.navbar-expand-lg .navbar-nav>li.nav-item>a>span{
+		color: #000000;
+	}
+}
+@media (max-width: 991px){
+	#mainNav.navbar-expand-lg .navbar-nav>li.nav-item>a>span:hover{
+		color: #f05f40;
+	}
+}
+/*Padding on nav buttons */
+#mainNav .navbar-nav>li.nav-item>a.nav-link>span, #mainNav .navbar-nav>li.nav-item>a.nav-link>span:focus{
+	padding-left: 20px;
+}
+
+
+.navbar-toggler-icon{
+	cursor: pointer;
+}
+
+.btn-outline>span{
+	border: 1px solid #ffffff;
+	border-radius: 10px;
+}
+
+.btn-solid-color>span{
+	background: #f05f40;
+	border-radius: 10px;
+	border: 1px solid #f05f40;
+	color: #ffffff !important;
+}
+.btn-solid-color>span:hover{
+	background: #eb3812;
+	border: 1px solid #eb3812;
+}
+
+.nav-margin-10px{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.btn-padding-20{
+	padding-right: 20px !important;
+	padding-left: 20px !important;
+}
+
+.btn-lookalike{
+	padding-bottom: 7.5px;
+	padding-top: 7.5px;
+}
+
+#mainNav .navbar-nav>li.nav-item>a.nav-link, #mainNav .navbar-nav>li.nav-item>a.nav-link:focus{
+	font-size: 16px;
+}
+#mainNav.navbar-shrink>div.container>a.navbar-brand{
+	font-size: 24px;
+}
+.navbar-brand{
+	font-size: 24px;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	padding-left: 20px;
+}
+
+#hellonav{
+	cursor: pointer;
+}
+.cartnav{
+	padding-top:5px;
+	cursor:pointer;
+}
+.mycart{
+	font-size: 1.5em;
+	cursor: pointer;
+}
+
+#cart-item-count{
+	background-color: #ff3300;
+	border-radius: 50px;
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+	padding-right: 8px !important;
+	padding-left: 8px !important;
+	color: white !important;
+}

@@ -22,3 +22,5 @@ input[type="submit"]{
 	color: #ffffff !important;
   cursor: pointer;
 }
+
+.error {color: #f05f40;}

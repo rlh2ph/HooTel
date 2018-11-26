@@ -34,14 +34,10 @@
 
 <!--Our own css -->
 <link href="reservation.css" rel="stylesheet">
-<style>
-.error {color: #FF0000;}
-</style>
+
 </head>
   <body>
-    <?php
-  		include(dirname(__FILE__).'/components/nav.php');
-  	?>
+
 
 
 
@@ -96,6 +92,47 @@ function test_input($data) {
   return $data;
 }
 ?>
+<?php
+$state = 0;
+foreach($_POST as $key => $value) {
+  if(!empty($value)) {
+
+  }
+  else{
+    echo "Error, not all values given.";
+    $state += 1;
+    //echo $state;
+    die;
+  }
+
+}
+//echo $state;
+if ($state == 0){
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
+      reservationInfo($mysqli,$_POST["checkin"],$_POST["checkout"],$_POST["roomnum"], $_POST["partysize"]);
+  }
+}
+
+
+function reservationInfo($mysqli,$checkin,$checkout,$roomnum){
+  $id = $_SESSION['guest_id'];
+  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
+
+  if(mysqli_query($mysqli, $reservation)){
+      echo "Reservation Records inserted successfully.";
+      header("Location:index.php");
+  } else{
+      echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
+  }
+}
+
+
+?>
+
+<?php
+  include(dirname(__FILE__).'/components/nav.php');
+  echo $_SESSION["guest_id"];
+?>
 <div class="center-screen">
 <h2 class="heading">Make a Reservation</h2>
 <p><span class="error">* required field</span></p>
@@ -128,41 +165,7 @@ function test_input($data) {
 </form>
 </div>
 
-<?php
-$state = 0;
-foreach($_POST as $key => $value) {
-  if(!empty($value)) {
 
-  }
-  else{
-    echo "Error, not all values given.";
-    $state += 1;
-    //echo $state;
-    die;
-  }
-
-}
-//echo $state;
-if ($state == 0){
-  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
-      reservationInfo($mysqli,$checkin,$checkout,$roomnum);
-  }
-}
-
-
-function reservationInfo($mysqli,$checkin,$checkout,$roomnum){
-  $id = $_SESSION['guest_id'];
-  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id) VALUES ('$checkin', '$checkout', '$roomnum', '$id')";
-
-  if(mysqli_query($mysqli, $reservation)){
-      echo "Reservation Records inserted successfully.";
-  } else{
-      echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
-  }
-}
-
-
-?>
 
 
 </body>

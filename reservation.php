@@ -1,12 +1,5 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<style>
-.error {color: #FF0000;}
-</style>
-</head>
-<body>
-
 <?php
   session_start();
 
@@ -16,6 +9,41 @@
   $dbname = "am7eu_dbproject";
   $mysqli = new mysqli($server, $user, $password, $dbname);
 ?>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>The HooTel</title>
+
+<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+  <!-- Plugin CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/creative.min.css" rel="stylesheet">
+
+<!--Our own css -->
+<link href="reservation.css" rel="stylesheet">
+<style>
+.error {color: #FF0000;}
+</style>
+</head>
+  <body>
+    <?php
+  		include(dirname(__FILE__).'/components/nav.php');
+  	?>
+
+
 
 <?php
 // define variables and set to empty values
@@ -68,11 +96,12 @@ function test_input($data) {
   return $data;
 }
 ?>
-
-<h2>Make a Reservation</h2>
+<div class="center-screen">
+<h2 class="heading">Make a Reservation</h2>
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <h4>Reservation Information</h4>
+  <h4 class="heading">Reservation Information</h4>
+  <div class="heading">
   Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
   <span class="error">* <?php echo $checkinErr;?></span>
   <br><br>
@@ -94,8 +123,10 @@ function test_input($data) {
   Party Size: <input type="text" name="partysize" value="<?php echo $partysize;?>">
   <span class="error">* <?php echo $partysizeErr;?></span>
   <br><br>
+</div>
   <input type="submit" name="submit" value="Submit">
 </form>
+</div>
 
 <?php
 $state = 0;
@@ -131,23 +162,6 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum){
 }
 
 
-
-// $result = $mysqli->query("SELECT * FROM guest WHERE first_name = 'Mark'");
-//
-// while ($row = mysqli_fetch_assoc($result)) {
-//   echo "Guest ID: ";
-//   echo $row['guest_id'];
-//   echo "<br>";
-//   echo "Last Name: ";
-//   echo $row['last_name'];
-//   echo "<br>";
-//   echo "First Name: ";
-//   echo $row['first_name'];
-//   echo "<br>";
-//   echo "DOB: ";
-//   echo $row['DOB'];
-//   echo "<br>";
-// }
 ?>
 
 

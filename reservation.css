@@ -1,0 +1,24 @@
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+body{
+  background-color: #3b5784;
+}
+
+.heading{
+  color: white;
+}
+
+input[type="submit"]{
+  background: #f05f40;
+	border-radius: 10px;
+	border: 1px solid #f05f40;
+	color: #ffffff !important;
+  cursor: pointer;
+}

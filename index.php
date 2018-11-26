@@ -39,7 +39,7 @@
         <div class="header-content-inner">
           <h1 id="homeHeading">HOSPITALITY <br> FOR EVERYONE</h1>
           <hr>
-		  <p style="font-size:20px">When you're here, you're family</p>
+		  <p style="font-size:20px">Wahoowa</p>
         </div>
 		<br>
 		<div id="dot-div" style="text-align:center">

@@ -111,6 +111,7 @@ function submit($lastName,$mysqli){
         $room_num = $new_row['room_num'];
         $check_in = $new_row['check_in'];
         $check_out = $new_row['check_out'];
+        $red_id = $new_row['res_id'];
         echo $guest_first_name . " " . $guest_last_name;
         echo "<br>";
         echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));

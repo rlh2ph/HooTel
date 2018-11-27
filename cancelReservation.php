@@ -61,27 +61,33 @@ function test_input($data) {
 }
 ?>
 
-<h2>Cancel Reservation<h2>
+<?php
+include(dirname(__FILE__).'/components/nav.php');
+ ?>
+
+ <?php
+ $res_id = $_GET["id"];
+ echo $res_id;
+  ?>
+
+<!-- <h2>Cancel Reservation<h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   Reservation Number: <input type="text" name="res_id" value="<?php echo $reservationNumber;?>">
   <span class="error">* <?php echo $reservationNumber;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">
-</form>
+</form> -->
 
 <?php
 
-include(dirname(__FILE__).'/components/nav.php');
+submit($res_id,$conn);
 
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
-{
-    submit($reservationNumber,$conn);
-}
 function submit($reservationNumber,$conn){
   $reserve = "DELETE FROM reserve WHERE res_id = '$reservationNumber'";
 
   if ($conn->query($reserve) === TRUE) {
       echo "Record deleted successfully";
+      header("Location:reservationPerPerson.php");
   } else {
       echo "Error deleting record: " . $conn->error;
   }

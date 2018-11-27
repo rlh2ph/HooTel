@@ -20,9 +20,6 @@
 					<a class="btn-solid-color nav-link js-scroll-trigger" href="guestchoice.php"><span class="nav-margin-10px btn-padding-20 btn-lookalike">Reservation</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="btn-solid-color nav-link js-scroll-trigger" href="searchForPayment.php"><span class="nav-margin-10px btn-padding-20 btn-lookalike">Payment</span></a>
-				</li>
-				<li class="nav-item">
 					<a class="btn-solid-color nav-link js-scroll-trigger" href="search.php"><span class="nav-margin-10px btn-padding-20 btn-lookalike">Search</span></a>
 				</li>
 			</ul>

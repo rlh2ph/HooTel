@@ -154,6 +154,8 @@ function submit($lastName,$mysqli){
         echo "<br>";
         echo "<a href='editReservation.php?id=" . $res_id ."'>Edit Reservation</a>";
         echo "<br>";
+        echo "<a href='cancelReservation.php?id=" . $res_id ."'>Cancel Reservation</a>";
+        echo "<br>";
     }
   }
 

@@ -128,7 +128,7 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
         die();
       }
   } else{
-      echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
+      echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
   }
 }
 

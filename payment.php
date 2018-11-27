@@ -138,6 +138,13 @@ if(mysqli_query($mysqli, $payment)){
 </div>
 
 
+$payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";
+if(mysqli_query($mysqli, $payment)){
+    echo "Records inserted successfully.";
+} else{
+    echo "ERROR: Could not execute $payment. " . mysqli_error($mysqli);
+}
+?>
 
 </body>
 </html>

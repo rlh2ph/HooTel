@@ -90,15 +90,34 @@ function test_input($data) {
 ?>
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
-{
-    session_start();
-    $paymentAmount = submit($fname,$lname,$dob,$mysqli,$checkin,$checkout);
-    $_SESSION['resAmt'] = $paymentAmount;
-    header("Location:payment.php");
-    die();
+
+$state = 0;
+foreach($_POST as $key => $value) {
+  if(!empty($value)) {
+
+  }
+  else{
+    echo "Error, not all values given.";
+    $state += 1;
+    //echo $state;
+    die;
+  }
 
 }
+//echo $state;
+if ($state == 0){
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
+  {
+      session_start();
+      $paymentAmount = submit($fname,$lname,$dob,$mysqli,$checkin,$checkout);
+      $_SESSION['resAmt'] = $paymentAmount;
+      header("Location:payment.php");
+      die();
+
+  }
+}
+
+
 function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
 
   $result = $mysqli->query("SELECT `guest_id` FROM `guest` WHERE `last_name` = '$lname' AND `first_name` = '$fname' AND `DOB` = '$dob'");

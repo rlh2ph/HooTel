@@ -97,13 +97,12 @@ function test_input($data) {
 ?>
 
 <?php
-
-$payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";
-if(mysqli_query($mysqli, $payment)){
-    echo "Records inserted successfully.";
-} else{
-    echo "ERROR: Could not able to execute $payment. " . mysqli_error($mysqli);
-}
+//$payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";
+//if(mysqli_query($mysqli, $payment)){
+//    echo "Records inserted successfully.";
+//} else{
+//    echo "ERROR: Could not able to execute $payment. " . mysqli_error($mysqli);
+//}
 ?>
 
 <?php
@@ -137,7 +136,7 @@ if(mysqli_query($mysqli, $payment)){
 </form>
 </div>
 
-
+<?php
 $state = 0;
 foreach($_POST as $key => $value) {
   if(!empty($value)) {

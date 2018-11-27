@@ -110,17 +110,23 @@ foreach($_POST as $key => $value) {
 if ($state == 0){
   if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
       reservationInfo($mysqli,$_POST["checkin"],$_POST["checkout"],$_POST["roomnum"], $_POST["partysize"]);
+      echo $_POST['partysize'];
   }
 }
 
 
-function reservationInfo($mysqli,$checkin,$checkout,$roomnum){
+function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
   $id = $_SESSION['guest_id'];
   $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
-
+  // update room table to make room not available
+  $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
   if(mysqli_query($mysqli, $reservation)){
       echo "Reservation Records inserted successfully.";
-      header("Location:index.php");
+      if(mysqli_query($mysqli, $update_room)){
+        echo "Reservation Records inserted successfully.";
+        header("Location:index.php");
+        die();
+      }
   } else{
       echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
   }
@@ -136,7 +142,7 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum){
 <div class="center-screen">
 <h2 class="heading">Make a Reservation</h2>
 <p><span class="error">* required field</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<form method="post" action="reservation.php">
   <h4 class="heading">Reservation Information</h4>
   <div class="heading">
   Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">

@@ -99,7 +99,7 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr
 ?>
 
 <div class="center-screen">
-<h2 class="heading">Make a Reservation</h2>
+<h2 class="heading">Edit Reservation</h2>
 <p><span class="error">* required field</span></p>
 <form method="post" action="reservation.php">
   <h4 class="heading">Reservation Information</h4>
@@ -132,8 +132,8 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr
 
 <?php
 function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
-  $id = $_SESSION['guest_id'];
-  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
+  $resID = $_SESSION['res_id'];
+  //$reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
   // update room table to make room not available
   $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
   if(mysqli_query($mysqli, $reservation)){

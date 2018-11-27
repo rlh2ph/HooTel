@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <?php
+  session_start();
   $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
 <head>
@@ -91,25 +92,38 @@ function test_input($data) {
 
 <?php
 
-$state = 0;
-foreach($_POST as $key => $value) {
-  if(!empty($value)) {
+// $state = 0;
+// foreach($_POST as $key => $value) {
+//   if(!empty($value)) {
+//
+//   }
+//   else{
+//     header("Refresh: 0; url=searchForPayment.php");
+//     alert("Error, not all values given.");
+//     $state += 1;
+//     //echo $state;
+//     die();
+//   }
+//
+// }
+// //echo $state;
+// if ($state == 0){
+//
+// }
+//
+// function alert($msg) {
+//   echo "<script type='text/javascript'>alert('$msg');</script>";
+// }
+//
 
-  }
-  else{
-    header("Refresh: 0; url=searchForPayment.php");
-    alert("Error, not all values given.");
-    $state += 1;
-    //echo $state;
-    die();
-  }
 
-}
-//echo $state;
-if ($state == 0){
+
+?>
+
+<?php
+if($fnameErr == "" && $dobErr == "" && $lnameErr == "" && $checkinErr == "" && $checkoutErr == ""){
   if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
   {
-      session_start();
       $paymentAmount = submit($fname,$lname,$dob,$mysqli,$checkin,$checkout);
       $_SESSION['resAmt'] = $paymentAmount;
       header("Location:payment.php");
@@ -117,41 +131,7 @@ if ($state == 0){
 
   }
 }
-
-function alert($msg) {
-  echo "<script type='text/javascript'>alert('$msg');</script>";
-}
-
-function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
-
-  $result = $mysqli->query("SELECT `guest_id` FROM `guest` WHERE `last_name` = '$lname' AND `first_name` = '$fname' AND `DOB` = '$dob'");
-  $row = mysqli_fetch_assoc($result);
-  //echo $row['guest_id'];
-  //echo "<br>";
-  $gID = $row['guest_id'];
-  $result2 = $mysqli->query("SELECT * FROM `reserve` WHERE`check_in` = '$checkin' AND `check_out` = '$checkout' AND  `guest_id` = '$gID'");
-  $row2 = mysqli_fetch_assoc($result2);
-  //echo "res id: " . $row2['res_id'];
-  //echo "<br>";
-  $rID = $row2['res_id'];
-  /*
-  $result3 = $mysqli->query("SELECT * FROM `payment` WHERE `reservation_id` = '$rID'");
-  $row3 = mysqli_fetch_assoc($result3);
-  */
-  //$dateCheckin = strtotime($checkin);
-  //$dateCheckout = strtotime($checkout);
-  $checkinFormat = new DateTime($checkin);
-  $checkoutFormat = new DateTime($checkout);
-  $amount = $checkinFormat->diff($checkoutFormat);
-  $numDays = $amount->d;
-  //echo "Price: " . $amount;
-  return $numDays * 50;
-}
-
-
-?>
-
-
+ ?>
 
 <?php
   include(dirname(__FILE__).'/components/nav.php');
@@ -180,6 +160,34 @@ function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
   <input type="submit" name="submit" value="Submit">
 </form>
 </div>
+
+<script>
+function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
+
+  $result = $mysqli->query("SELECT `guest_id` FROM `guest` WHERE `last_name` = '$lname' AND `first_name` = '$fname' AND `DOB` = '$dob'");
+  $row = mysqli_fetch_assoc($result);
+  //echo $row['guest_id'];
+  //echo "<br>";
+  $gID = $row['guest_id'];
+  $result2 = $mysqli->query("SELECT * FROM `reserve` WHERE`check_in` = '$checkin' AND `check_out` = '$checkout' AND  `guest_id` = '$gID'");
+  $row2 = mysqli_fetch_assoc($result2);
+  //echo "res id: " . $row2['res_id'];
+  //echo "<br>";
+  $rID = $row2['res_id'];
+  /*
+  $result3 = $mysqli->query("SELECT * FROM `payment` WHERE `reservation_id` = '$rID'");
+  $row3 = mysqli_fetch_assoc($result3);
+  */
+  //$dateCheckin = strtotime($checkin);
+  //$dateCheckout = strtotime($checkout);
+  $checkinFormat = new DateTime($checkin);
+  $checkoutFormat = new DateTime($checkout);
+  $amount = $checkinFormat->diff($checkoutFormat);
+  $numDays = $amount->d;
+  //echo "Price: " . $amount;
+  return $numDays * 50;
+}
+</script>
 
 
 

@@ -78,13 +78,39 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 <?php
 
 function submit($roomNumber,$mysqli){
-  $result = $mysqli->query("SELECT * FROM `reserve` WHERE `room_num` = $roomNumber LIMIT 0, 30 ");
-  return $result;
+    $result = $mysqli->query("SELECT * FROM `reserve` WHERE `room_num` = $roomNumber LIMIT 0, 30 ");
+
+
+    return $result;
 }
 ?>
 <div class="heading" style="font-size: 25px;">
 
 <?php
+
+$room_type = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `room` WHERE `room_num` = '$roomNumber'"));
+//echo "<br>";
+$room_type = $room_type['type_id'];
+
+//echo "Room Type ID: " . $room_type;
+
+$room_type_desc = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `room_type` WHERE `type_id` = '$room_type'"));
+echo "<br>";
+$type_name = $room_type_desc['type_name'];
+$bed_layout = $room_type_desc['bed_layout'];
+$balcony = $room_type_desc['balcony'];
+$smoking = $room_type_desc['smoking'];
+$capacity = $room_type_desc['capacity'];
+echo "Room Type: " . $type_name;
+echo "<br>";
+echo "Capacity: " . $capacity;
+echo "<br>";
+echo "Bed Layout: " . $bed_layout;
+echo "<br>";
+echo "Balcony: " . $balcony;
+echo "<br>";
+echo "Smoking: " . $smoking;
+echo "<br>";
 
 while ($row = mysqli_fetch_assoc($room_result)) {
     $res_id = $row['res_id'];
@@ -103,6 +129,10 @@ while ($row = mysqli_fetch_assoc($room_result)) {
     echo "<br>";
     echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
     echo "<br>";
+
+
+
+
 }
 ?>
 </div>

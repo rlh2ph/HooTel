@@ -1,5 +1,6 @@
 <html>
 <?php
+session_start();
 $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
 
@@ -113,12 +114,14 @@ function submit($lastName,$mysqli){
         $room_num = $new_row['room_num'];
         $check_in = $new_row['check_in'];
         $check_out = $new_row['check_out'];
-        $red_id = $new_row['res_id'];
+        $res_id = $new_row['res_id'];
+        $_SESSION['res_id'] = $res_id;
         echo $guest_first_name . " " . $guest_last_name;
         echo "<br>";
         echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
         echo "<br>";
         echo "Room Number: " . $room_num;
+        $_SESSION['room_num'] = $room_num;
         //echo "<br>";
         //echo "Check-In: " . $check_in;
         //echo "<br>";
@@ -127,6 +130,7 @@ function submit($lastName,$mysqli){
         $room_type = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `room` WHERE `room_num` = '$room_num'"));
         //echo "<br>";
         $room_type = $room_type['type_id'];
+
         //echo "Room Type ID: " . $room_type;
 
         $room_type_desc = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `room_type` WHERE `type_id` = '$room_type'"));

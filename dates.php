@@ -172,7 +172,6 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == ""){
 
 <?php
   include(dirname(__FILE__).'/components/nav.php');
-  echo $_SESSION["guest_id"];
 ?>
 <div class="center-screen">
 <h2 class="heading">Make a Reservation</h2>

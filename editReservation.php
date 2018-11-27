@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <?php
+session_start();
 $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
 <head>
@@ -101,7 +102,7 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr
 <div class="center-screen">
 <h2 class="heading">Edit Reservation</h2>
 <p><span class="error">* required field</span></p>
-<form method="post" action="reservation.php">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <h4 class="heading">Reservation Information</h4>
   <div class="heading">
   Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
@@ -135,7 +136,16 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
   $resID = $_SESSION['res_id'];
   //$reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
   // update room table to make room not available
-  $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
+  //$update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
+  $update_res = "UPDATE reserve SET check_in = '$checkin' AND check_out = '$checkout' AND room_num = '$roomnum' AND party_size = '$partysize' WHERE res_id = '$resID'";
+  if(mysqli_query($mysqli, $update_res)){
+      echo "Reservation updated successfully!";
+      //header("Location:index.php");
+      die();
+  } else {
+      echo "ERROR: Could not execute $update_res. " . mysqli_error($mysqli);
+  }
+/*
   if(mysqli_query($mysqli, $reservation)){
       echo "Reservation Records inserted successfully.";
       if(mysqli_query($mysqli, $update_room)){
@@ -145,7 +155,7 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
       }
   } else{
       echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
-  }
+  }*/
 }
 ?>
 

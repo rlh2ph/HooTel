@@ -11,7 +11,6 @@
 <?php
   $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
   session_start();
-  echo "the amount: " . $_SESSION['resAmt']
 ?>
 
 <?php

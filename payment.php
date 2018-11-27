@@ -143,7 +143,7 @@ foreach($_POST as $key => $value) {
 
   }
   else{
-    header("Refresh: 0; url=searchForPayment.php");
+    header("Refresh: 0; url=payment.php");
     alert("Error, not all values given.");
     $state += 1;
 

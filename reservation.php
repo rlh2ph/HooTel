@@ -75,13 +75,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $expErr = "Expiration Date is required";
   } else {
     $exp = test_input($_POST["exp"]);
-    
+
    // check if name only contains letters and whitespace
    if (!preg_match("/^([0-9]{2})\/([0-9]{2})$/",$exp)) {
      $expErr = "Expiration date must be in the format of yy/mm";
    }
-    
-    
+
+
   }
   if (empty($_POST["cvv"])) {
     $cvvErr = "Party size is required";
@@ -137,10 +137,10 @@ if($roomnumErr == "" && $nameErr == "" && $cardnumErr == "" && $expErr == "" && 
   $out = $_SESSION["checkout"];
   $sql=mysqli_query($mysqli, "SELECT room_num FROM room WHERE room_num NOT IN (
     SELECT room_num FROM reserve WHERE
-    ('$in' < reserve.check_in && '$in' < reserve.check_out && reserve.check_in < '$out' && '$out' < reserve.check_out) ||
-    (reserve.check_in < '$in' && '$in' < reserve.check_out && reserve.check_in < '$out' && '$out' < reserve.check_out) ||
-    (reserve.check_in < '$in' && reserve.check_in < '$out' && '$in' < reserve.check_out && reserve.check_out < '$out') ||
-    ('$in' < reserve.check_in && '$in' < reserve.check_out && reserve.check_in < '$out' && reserve.check_out < '$out')
+    ('$in' <= reserve.check_in && '$in' <= reserve.check_out && reserve.check_in <= '$out' && '$out' <=reserve.check_out) ||
+    (reserve.check_in <= '$in' && '$in' <= reserve.check_out && reserve.check_in <= '$out' && '$out' <= reserve.check_out) ||
+    (reserve.check_in <= '$in' && reserve.check_in <= '$out' && '$in' <= reserve.check_out && reserve.check_out <= '$out') ||
+    ('$in' <= reserve.check_in && '$in' <= reserve.check_out && reserve.check_in <= '$out' && reserve.check_out <= '$out')
   )");
 
 

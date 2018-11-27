@@ -1,20 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <?php
-  session_start();
-
-  $server = "mysql.cs.virginia.edu";
-  $user = "am7eu";
-  $password = "u9KzwMUi";
-  $dbname = "am7eu_dbproject";
-  $mysqli = new mysqli($server, $user, $password, $dbname);
+$mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
 <head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>The HooTel</title>
+  <title>Edit Reservation</title>
 
 <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
 
@@ -36,7 +30,8 @@
 <link href="reservation.css" rel="stylesheet">
 
 </head>
-  <body>
+  <body id="page-top">
+
 
 <?php
 // define variables and set to empty values
@@ -97,30 +92,12 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr
       echo $_POST['partysize'];
   }
 }
-
-// $state = 0;
-// foreach($_POST as $key => $value) {
-//   if(!empty($value)) {
-//
-//   }
-//   else{
-//     echo "Error, not all values given.";
-//     $state += 1;
-//     //echo $state;
-//     die;
-//   }
-//
-// }
-// //echo $state;
-// if ($state == 0){
-
-
 ?>
 
 <?php
   include(dirname(__FILE__).'/components/nav.php');
-  echo $_SESSION["guest_id"];
 ?>
+
 <div class="center-screen">
 <h2 class="heading">Make a Reservation</h2>
 <p><span class="error">* required field</span></p>
@@ -170,9 +147,7 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
       echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
   }
 }
- ?>
-
-
+?>
 
 
 </body>

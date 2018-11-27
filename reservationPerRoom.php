@@ -78,9 +78,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 <?php
 
 function submit($roomNumber,$mysqli){
-  echo "<h2>Room searched: $roomNumber<h2>";
   $result = $mysqli->query("SELECT * FROM `reserve` WHERE `room_num` = $roomNumber LIMIT 0, 30 ");
-  while ($row = mysqli_fetch_assoc($result)) {
+  return $result;
+}
+?>
+<div class="heading">
+  
+<?php
+
+while ($row = mysqli_fetch_assoc($room_result)) {
     $res_id = $row['res_id'];
     $space = " ";
     echo "<br>";
@@ -97,9 +103,9 @@ function submit($roomNumber,$mysqli){
     echo "<br>";
     echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
     echo "<br>";
-  }
 }
 ?>
+</div>
 
 </body>
 </html>

@@ -151,6 +151,8 @@ function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
 
 ?>
 
+
+
 <?php
   include(dirname(__FILE__).'/components/nav.php');
 ?>

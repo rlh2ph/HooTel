@@ -80,8 +80,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 <?php
 
 function submit($lastName,$mysqli){
-  echo "<h2>Last name searched: $lastName<h2>";
-
   //get all guests with that last name
   $query_string = "SELECT * FROM `guest` WHERE `last_name` = '$lastName' ";
   $result = $mysqli->query($query_string);

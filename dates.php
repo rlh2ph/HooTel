@@ -38,12 +38,42 @@
 </head>
   <body>
 
+
+
+
 <?php
 // define variables and set to empty values
-$roomnumErr = $nameErr = $cardnumErr = $expErr = $cvvErr = $priceErr = "";
-$roomnum = $name = $cardnum = $exp = $cvv = $price = "";
+$partysizeErr = $checkinErr = $checkoutErr = $roomnumErr = $nameErr = $cardnumErr = $expErr = $cvvErr = $priceErr = "";
+$partysize = $checkin = $checkout = $roomnum = $name = $cardnum = $exp = $cvv = $price = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["partysize"])) {
+    $partysizeErr = "Party size is required";
+  } else {
+    $partysize = test_input($_POST["partysize"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[0-9]*$/",$partysize)) {
+      $partysizeErr = "Party size must be a number";
+    }
+  }
+  if (empty($_POST["checkin"])) {
+    $checkinErr = "Check in date is required";
+  } else {
+    $checkin = test_input($_POST["checkin"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$checkin)) {
+      $checkinErr = "Check in date must be in the format of yyyy-mm-dd";
+    }
+  }
+  if (empty($_POST["checkout"])) {
+    $checkoutErr = "Check out date is required";
+  } else {
+    $checkout = test_input($_POST["checkout"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$checkout)) {
+      $checkoutErr = "Check out date must be in the format of yyyy-mm-dd";
+    }
+  }
   if (empty($_POST["roomnum"])) {
     $roomnumErr = "Room number is required";
   } else {
@@ -63,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
   if (empty($_POST["cardnum"])) {
-    $cardnumErr = "Card number is required";
+    $cardnumErr = "Last name is required";
   } else {
     $cardnum = test_input($_POST["cardnum"]);
     // check if name only contains letters and whitespace
@@ -108,96 +138,79 @@ function test_input($data) {
 }
 ?>
 <?php
-if($roomnumErr == "" && $nameErr == "" && $cardnumErr == "" && $expErr == "" && $cvvErr == "" && $priceErr == ""){
-  echo "yah";
+
+if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == ""){
   if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
-      $res_id = reservationInfo($mysqli,$_SESSION["checkin"],$_SESSION["checkout"],$_POST["roomnum"], $_SESSION["partysize"]);
-      $pay_id = paymentInfo($mysqli, $_POST["name"], $_POST["cardnum"], $_POST["exp"], $_POST["cvv"], $_POST["price"], $res_id);
-      header("Location:index.php");
+      // reservationInfo($mysqli,$_POST["checkin"],$_POST["checkout"],$_POST["roomnum"], $_POST["partysize"]);
+      $_SESSION["checkin"] = $checkin;
+      $_SESSION["checkout"] = $checkout;
+      $_SESSION["partysize"] = $partysize;
+      header("Location:reservation.php");
       die();
+
   }
 }
+
+// $state = 0;
+// foreach($_POST as $key => $value) {
+//   if(!empty($value)) {
+//
+//   }
+//   else{
+//     echo "Error, not all values given.";
+//     $state += 1;
+//     //echo $state;
+//     die;
+//   }
+//
+// }
+// //echo $state;
+// if ($state == 0){
 
 
 ?>
 
 <?php
   include(dirname(__FILE__).'/components/nav.php');
-  echo "guest", $_SESSION["guest_id"];
-  echo "checkin", $_SESSION["checkin"];
-  echo "checkout", $_SESSION["checkout"];
-  echo "partysize", $_SESSION["partysize"];
-
+  echo $_SESSION["guest_id"];
 ?>
 <div class="center-screen">
 <h2 class="heading">Make a Reservation</h2>
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <h4 class="heading">Reservation Information</h4>
   <div class="heading">
-  <?php
-  $sql=mysqli_query($mysqli, "SELECT * FROM room WHERE available=1");
-  if(mysqli_num_rows($sql)){
-  $select= 'Room #: <select name="roomnum">';
-  while($rs=mysqli_fetch_array($sql)){
-        $select.='<option value="'.$rs['room_num'].'">'.$rs['room_num'].'</option>';
-    }
-  }
-  $select.='</select>';
-  echo $select;
-  ?>
-</br><br>
-</div>
-<hr>
-<h4 class="heading">Credit Card Information</h4>
-<div class="heading">
-  Cardholder Name: <input type="text" name="name" value="<?php echo $name;?>">
-  <span class="error">* <?php echo $nameErr;?></span>
+  Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
+  <span class="error">* <?php echo $checkinErr;?></span>
   <br><br>
-  Credit Card Number: <input type="text" name="cardnum" value="<?php echo $cardnum;?>">
-  <span class="error">* <?php echo $cardnumErr;?></span>
+  Check Out: <input type="text" name="checkout" value="<?php echo $checkout;?>">
+  <span class="error">* <?php echo $checkoutErr;?></span>
   <br><br>
-  Expiration Date: <input type="text" name="exp" value="<?php echo $exp;?>">
-  <span class="error">* <?php echo $expErr;?></span>
+  Party Size: <input type="text" name="partysize" value="<?php echo $partysize;?>">
+  <span class="error">* <?php echo $partysizeErr;?></span>
   <br><br>
-  CVV: <input type="text" name="cvv" value="<?php echo $cvv;?>">
-  <span class="error">* <?php echo $cvvErr;?></span>
-  <br><br>
-  Price: $<input type="text" name="price" value="<?php echo $price;?>">
-  <span class="error">* <?php echo $priceErr;?></span>
-  <br><br>
-  <input type="submit" name="submit" value="Submit">
+  <input type="submit" name="submit" value="Next">
 </form>
 </div>
 
 <?php
-function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
-  $id = $_SESSION['guest_id'];
-  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
-  // update room table to make room not available
-  $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
-  $ret;
-  if(mysqli_query($mysqli, $reservation)){
-      echo "Reservation Records inserted successfully.";
-      $ret = $mysqli->insert_id;
-      if(mysqli_query($mysqli, $update_room)){
-        echo "Reservation Records inserted successfully.";
-      }
-  } else{
-      echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
-  }
-  return $ret;
-}
-
-function paymentInfo($mysqli, $name, $cardnum, $exp, $cvv, $price, $res_id){
-  $payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name, reservation_id) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name', '$res_id')";
-  if(mysqli_query($mysqli, $payment)){
-    echo "Payment records inserted successfully.";
-  }
-  else{
-    echo "ERROR: Could not execute $payment. " . mysqli_error($mysqli);
-  }
-}
-?>
+// function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
+//   $id = $_SESSION['guest_id'];
+//   $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
+//   // update room table to make room not available
+//   $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
+//   if(mysqli_query($mysqli, $reservation)){
+//       echo "Reservation Records inserted successfully.";
+//       if(mysqli_query($mysqli, $update_room)){
+//         echo "Reservation Records inserted successfully.";
+//         header("Location:index.php");
+//         die();
+//       }
+//   } else{
+//       echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
+//   }
+// }
+ ?>
 
 
 

@@ -120,7 +120,7 @@ function test_input($data) {
 <?php
 if (isset($_POST['submit'])) {
      $_SESSION['guest_id'] = $_POST['guest'];
-     header("Location:reservation.php");
+     header("Location:dates.php");
      die();
 }
 ?>

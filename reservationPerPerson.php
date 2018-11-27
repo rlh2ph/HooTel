@@ -96,7 +96,7 @@ function submit($lastName,$mysqli){
     $guest_first_name = $row['first_name'];
     $guest_last_name = $row['last_name'];
     //echo "Guest ID: " . $guest_id;
-    echo $guest_first_name . " " . $guest_last_name;
+    //echo $guest_first_name . " " . $guest_last_name;
 
     //get all reservations that are associated with that guest
     $query = "SELECT * FROM `reserve` WHERE `guest_id` = $guest_id ";
@@ -111,6 +111,8 @@ function submit($lastName,$mysqli){
         $room_num = $new_row['room_num'];
         $check_in = $new_row['check_in'];
         $check_out = $new_row['check_out'];
+        echo $guest_first_name . " " . $guest_last_name;
+        echo "<br>";
         echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
         echo "<br>";
         echo "Room Number: " . $room_num;

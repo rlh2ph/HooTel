@@ -10,6 +10,7 @@
 
 <?php
   $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
+  session_start();
 ?>
 
 <?php
@@ -89,7 +90,7 @@ function test_input($data) {
   CVV: <input type="text" name="cvv" value="<?php echo $cvv;?>">
   <span class="error">* <?php echo $cvvErr;?></span>
   <br><br><br><br>
-  Price: $<input type="text" name="price" value="<?php echo $price;?>">
+  Price: $<input type="text" name="price" value="<?php echo $_SESSION['resAmt'];?>">
   <span class="error">* <?php echo $priceErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">

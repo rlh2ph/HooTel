@@ -89,33 +89,28 @@ function test_input($data) {
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 {
+    session_start();
     $paymentAmount = submit($fname,$lname,$dob,$mysqli,$checkin,$checkout);
+    $_SESSION['resAmt'] = $paymentAmount;
+    header("Location:payment.php");
+
 }
 function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
-  echo $fname;
-  echo "<br>";
-  echo $lname;
-  echo "<br>";
-  echo $dob;
-  echo "<br>";
-  echo $checkin;
-  echo "<br>";
-  echo $checkout;
-  echo "<br>";
+
   $result = $mysqli->query("SELECT `guest_id` FROM `guest` WHERE `last_name` = '$lname' AND `first_name` = '$fname' AND `DOB` = '$dob'");
   $row = mysqli_fetch_assoc($result);
-  echo $row['guest_id'];
-  echo "<br>";
+  //echo $row['guest_id'];
+  //echo "<br>";
   $gID = $row['guest_id'];
   $result2 = $mysqli->query("SELECT * FROM `reserve` WHERE`check_in` = '$checkin' AND `check_out` = '$checkout' AND  `guest_id` = '$gID'");
   $row2 = mysqli_fetch_assoc($result2);
-  echo "res id: " . $row2['res_id'];
-  echo "<br>";
+  //echo "res id: " . $row2['res_id'];
+  //echo "<br>";
   $rID = $row2['res_id'];
   $result3 = $mysqli->query("SELECT * FROM `payment` WHERE `reservation_id` = '$rID'");
   $row3 = mysqli_fetch_assoc($result3);
   $amount  = $row3['price'];
-  echo "Price: " . $amount;
+  //echo "Price: " . $amount;
   return $amount;
 }
 

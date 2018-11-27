@@ -97,10 +97,11 @@ foreach($_POST as $key => $value) {
 
   }
   else{
-    echo "Error, not all values given.";
+    header("Refresh: 0; url=searchForPayment.php");
+    alert("Error, not all values given.");
     $state += 1;
     //echo $state;
-    die;
+    die();
   }
 
 }
@@ -117,6 +118,9 @@ if ($state == 0){
   }
 }
 
+function alert($msg) {
+  echo "<script type='text/javascript'>alert('$msg');</script>";
+}
 
 function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
 

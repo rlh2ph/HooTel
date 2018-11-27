@@ -145,6 +145,7 @@ foreach($_POST as $key => $value) {
   else{
     echo "Error, not all values given.";
     $state += 1;
+    
     //echo $state;
     die;
   }

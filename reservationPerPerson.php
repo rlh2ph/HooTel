@@ -102,13 +102,13 @@ function submit($lastName,$mysqli){
 
     //get all reservations that are associated with that guest
     $query = "SELECT * FROM `reserve` WHERE `guest_id` = $guest_id ";
-    $room_num = $mysqli->query($query);
-    if(!$room_num){
+    $guest_resvs = $mysqli->query($query);
+    if(!$guest_resvs){
       die("Error in query:". mysqli_error($mysqli));
     }
 
     //for each reservation associated with the guest
-    while ($new_row = mysqli_fetch_assoc($room_num)) {
+    while ($new_row = mysqli_fetch_assoc($guest_resvs)) {
         echo "<br>";
         $room_num = $new_row['room_num'];
         $check_in = $new_row['check_in'];

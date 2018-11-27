@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
 <html>
+<?php
+$mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
+?>
 <head>
 
   <meta charset="utf-8">
@@ -30,9 +33,7 @@
   <body id="page-top">
 
 
-<?php
-$mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
-?>
+
 <?php
 $roomNumber = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -61,6 +62,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 ?>
 
 <?php
+  include(dirname(__FILE__).'/components/nav.php');
+?>
+<div class="center-screen">
+<h2 class="heading">Search by Room Number</h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <div class="heading">
+    RoomNumber: <input type="text" name="room_num" value="<?php echo $roomNumber;?>">
+    </div>
+    <br><br>
+    <input type="submit" name="submit" value="Submit">
+    </form>
+    </div>
+
+<?php
 
 function submit($roomNumber,$mysqli){
   echo "<h2>Room searched: $roomNumber<h2>";
@@ -83,9 +98,8 @@ function submit($roomNumber,$mysqli){
     echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
     echo "<br>";
   }
-
+}
 ?>
-</div>
 
 </body>
 </html>

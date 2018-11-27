@@ -119,7 +119,7 @@ function submit($firstname, $lastname, $dob, $mysqli){
   if(mysqli_query($mysqli, $guest)){
       echo "Records inserted successfully.";
       $_SESSION['guest_id'] = $mysqli->insert_id;
-      header("Location:reservation.php");
+      header("Location:dates.php");
       die();
   } else{
       echo "ERROR: Could not able to execute $guest. " . mysqli_error($mysqli);

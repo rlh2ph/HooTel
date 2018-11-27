@@ -98,6 +98,7 @@ function submit($lastName,$mysqli){
     $guest_id = $row['guest_id'];
     $guest_first_name = $row['first_name'];
     $guest_last_name = $row['last_name'];
+    $guest_dob = $row['DOB'];
     //echo "Guest ID: " . $guest_id;
     //echo $guest_first_name . " " . $guest_last_name;
 
@@ -119,6 +120,8 @@ function submit($lastName,$mysqli){
         $_SESSION['edit_checkin'] = $check_in;
         $_SESSION['edit_checkout'] = $check_out;
         echo $guest_first_name . " " . $guest_last_name;
+        echo "<br>";
+        echo "DOB: " . $guest_dob;
         echo "<br>";
         echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
         echo "<br>";

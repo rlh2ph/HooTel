@@ -35,6 +35,7 @@ $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproj
   <body>
 
 <?php
+$Err = "";
 $lastName = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
   if (empty($_POST["last_name"])) {
@@ -54,9 +55,10 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
+
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 {
-    $guest_result = submit($lastName,$mysqli);
+    $guest_result = submit($_POST['last_name'],$mysqli);
 }
 
 ?>

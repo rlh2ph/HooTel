@@ -65,8 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $exp = test_input($_POST["exp"]);
     // check if name only contains letters and whitespace
-    if (!preg_match("/^[0-9]{2}\/[0-9]{2}$/",$exp)) {
-      $expErr = "Expiration date must be in the format of mm/yy";
+    if (!preg_match("/^[0-9]{4})([-])([0-9]{2})$/",$exp)) {
+      $expErr = "Expiration date must be in the format of yyyy-mm";
     }
   }
   if (empty($_POST["cvv"])) {
@@ -158,7 +158,7 @@ function alert($msg) {
   echo "<script type='text/javascript'>alert('$msg');</script>";
 }
 
-$payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";
+$payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp' + " - 00", '$cvv', '$name')";
 if(mysqli_query($mysqli, $payment)){
     echo "Records inserted successfully.";
 } else{

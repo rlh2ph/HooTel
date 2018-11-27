@@ -75,10 +75,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $expErr = "Expiration Date is required";
   } else {
     $exp = test_input($_POST["exp"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[0-9]{2}\/[0-9]{2}$/",$exp)) {
-      $expErr = "Expiration date must be in the format of mm/yy";
-    }
+    
+   // check if name only contains letters and whitespace
+   if (!preg_match("/^([0-9]{2})\/([0-9]{2})$/",$exp)) {
+     $expErr = "Expiration date must be in the format of yy/mm";
+   }
+    
+    
   }
   if (empty($_POST["cvv"])) {
     $cvvErr = "Party size is required";

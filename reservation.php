@@ -93,44 +93,29 @@ function test_input($data) {
 }
 ?>
 <?php
-$state = 0;
-foreach($_POST as $key => $value) {
-  if(!empty($value)) {
 
-  }
-  else{
-    echo "Error, not all values given.";
-    $state += 1;
-    //echo $state;
-    die;
-  }
-
-}
-//echo $state;
-if ($state == 0){
+if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr == ""){
   if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
       reservationInfo($mysqli,$_POST["checkin"],$_POST["checkout"],$_POST["roomnum"], $_POST["partysize"]);
       echo $_POST['partysize'];
   }
 }
 
-
-function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
-  $id = $_SESSION['guest_id'];
-  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
-  // update room table to make room not available
-  $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
-  if(mysqli_query($mysqli, $reservation)){
-      echo "Reservation Records inserted successfully.";
-      if(mysqli_query($mysqli, $update_room)){
-        echo "Reservation Records inserted successfully.";
-        header("Location:index.php");
-        die();
-      }
-  } else{
-      echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
-  }
-}
+// $state = 0;
+// foreach($_POST as $key => $value) {
+//   if(!empty($value)) {
+//
+//   }
+//   else{
+//     echo "Error, not all values given.";
+//     $state += 1;
+//     //echo $state;
+//     die;
+//   }
+//
+// }
+// //echo $state;
+// if ($state == 0){
 
 
 ?>
@@ -170,6 +155,25 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
   <input type="submit" name="submit" value="Submit">
 </form>
 </div>
+
+<?php
+function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
+  $id = $_SESSION['guest_id'];
+  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
+  // update room table to make room not available
+  $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
+  if(mysqli_query($mysqli, $reservation)){
+      echo "Reservation Records inserted successfully.";
+      if(mysqli_query($mysqli, $update_room)){
+        echo "Reservation Records inserted successfully.";
+        header("Location:index.php");
+        die();
+      }
+  } else{
+      echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
+  }
+}
+ ?>
 
 
 

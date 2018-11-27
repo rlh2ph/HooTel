@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
   if (empty($_POST["exp"])) {
-    $expErr = "Date of Birth is required";
+    $expErr = "Expiration Date is required";
   } else {
     $exp = test_input($_POST["exp"]);
     // check if name only contains letters and whitespace
@@ -97,6 +97,20 @@ function test_input($data) {
 </form>
 
 <?php
+
+$state = 0;
+foreach($_POST as $key => $value) {
+  if(!empty($value)) {
+
+  }
+  else{
+    echo "Error, not all values given.";
+    $state += 1;
+    //echo $state;
+    die;
+  }
+
+}
 
 $payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";
 if(mysqli_query($mysqli, $payment)){

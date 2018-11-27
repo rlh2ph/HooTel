@@ -1,20 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <?php
-  session_start();
-
-  $server = "mysql.cs.virginia.edu";
-  $user = "am7eu";
-  $password = "u9KzwMUi";
-  $dbname = "am7eu_dbproject";
-  $mysqli = new mysqli($server, $user, $password, $dbname);
+$mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
 <head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>The HooTel</title>
+  <title>Edit Reservation</title>
 
 <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
 
@@ -36,42 +30,15 @@
 <link href="reservation.css" rel="stylesheet">
 
 </head>
-  <body>
+  <body id="page-top">
 
 
 <?php
 // define variables and set to empty values
-$firstnameErr = $lastnameErr = $dobErr = $partysizeErr = $checkinErr = $checkoutErr = $roomnumErr = "";
-$firstname = $lastname = $dob = $partysize = $checkin = $checkout = $roomnum = "";
+$partysizeErr = $checkinErr = $checkoutErr = $roomnumErr = "";
+$partysize = $checkin = $checkout = $roomnum = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["firstname"])) {
-    $firstnameErr = "First name is required";
-  } else {
-    $firstname = test_input($_POST["firstname"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$firstname)) {
-      $firstnameErr = "Only letters and white space allowed";
-    }
-  }
-  if (empty($_POST["lastname"])) {
-    $lastnameErr = "Last name is required";
-  } else {
-    $lastname = test_input($_POST["lastname"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$lastname)) {
-      $lastnameErr = "Only letters and white space allowed";
-    }
-  }
-  if (empty($_POST["dob"])) {
-    $dobErr = "Date of Birth is required";
-  } else {
-    $dob = test_input($_POST["dob"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$dob)) {
-      $dobErr = "DOB must be in the format of yyyy-mm-dd";
-    }
-  }
   if (empty($_POST["partysize"])) {
     $partysizeErr = "Party size is required";
   } else {
@@ -118,10 +85,12 @@ function test_input($data) {
 }
 ?>
 <?php
-if (isset($_POST['submit'])) {
-     $_SESSION['guest_id'] = $_POST['guest'];
-     header("Location:dates.php");
-     die();
+
+if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr == ""){
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
+      reservationInfo($mysqli,$_POST["checkin"],$_POST["checkout"],$_POST["roomnum"], $_POST["partysize"]);
+      echo $_POST['partysize'];
+  }
 }
 ?>
 
@@ -130,26 +99,55 @@ if (isset($_POST['submit'])) {
 ?>
 
 <div class="center-screen">
-<h2 class="heading">Existing Guests</h2>
-<form method="post">
+<h2 class="heading">Make a Reservation</h2>
+<p><span class="error">* required field</span></p>
+<form method="post" action="reservation.php">
+  <h4 class="heading">Reservation Information</h4>
+  <div class="heading">
+  Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
+  <span class="error">* <?php echo $checkinErr;?></span>
+  <br><br>
+  Check Out: <input type="text" name="checkout" value="<?php echo $checkout;?>">
+  <span class="error">* <?php echo $checkoutErr;?></span>
+  <br><br>
   <?php
-  $sql=mysqli_query($mysqli, "SELECT * FROM guest");
+  $sql=mysqli_query($mysqli, "SELECT * FROM room WHERE available=1");
   if(mysqli_num_rows($sql)){
-  $select= '<select name="guest">';
+  $select= 'Room #: <select name="roomnum">';
   while($rs=mysqli_fetch_array($sql)){
-        $select.='<option value="'.$rs['guest_id'].'">'.$rs['first_name'].' '.$rs['last_name'].' -- '.$rs['DOB'].'</option>';
+        $select.='<option value="'.$rs['room_num'].'">'.$rs['room_num'].'</option>';
     }
   }
   $select.='</select>';
   echo $select;
   ?>
-  <br>
-  <br>
+</br><br>
+  Party Size: <input type="text" name="partysize" value="<?php echo $partysize;?>">
+  <span class="error">* <?php echo $partysizeErr;?></span>
+  <br><br>
+</div>
   <input type="submit" name="submit" value="Submit">
 </form>
 </div>
 
-
+<?php
+function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
+  $id = $_SESSION['guest_id'];
+  $reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
+  // update room table to make room not available
+  $update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
+  if(mysqli_query($mysqli, $reservation)){
+      echo "Reservation Records inserted successfully.";
+      if(mysqli_query($mysqli, $update_room)){
+        echo "Reservation Records inserted successfully.";
+        header("Location:index.php");
+        die();
+      }
+  } else{
+      echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
+  }
+}
+?>
 
 
 </body>

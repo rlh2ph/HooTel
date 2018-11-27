@@ -57,7 +57,7 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading">Come Stay With Us!</h2>
             <hr class="primary">
-			<p>Feel free to call, email, or visit. <br> Our information is below.</p>
+			<p>Just $50 per night!</p>
           </div>
         </div>
         <div class="row">

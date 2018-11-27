@@ -27,7 +27,7 @@
 <link href="reservation.css" rel="stylesheet">
 
 </head>
-  <body>
+  <body id="page-top">
 
 
 <?php
@@ -56,7 +56,17 @@ function test_input($data) {
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 {
-    submit($_POST['room_num'],$mysqli);
+    $room_result = submit($_POST['room_num'],$mysqli);
+}
+?>
+
+<?php
+
+function submit($roomNumber,$mysqli){
+  echo "<h2>Room searched: <h2>";
+  echo $roomNumber;
+  $result = $mysqli->query("SELECT * FROM `reserve` WHERE `room_num` = $roomNumber LIMIT 0, 30 ");
+  return $result;
 }
 ?>
 
@@ -74,15 +84,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
   <input type="submit" name="submit" value="Submit">
 </form>
 </div>
-
-
+<div class="heading">
 <?php
-
-function submit($roomNumber,$mysqli){
-  echo "<h2>Room searched: <h2>";
-  echo $roomNumber;
-  $result = $mysqli->query("SELECT * FROM `reserve` WHERE `room_num` = $roomNumber LIMIT 0, 30 ");
-  while ($row = mysqli_fetch_assoc($result)) {
+  while ($row = mysqli_fetch_assoc($room_result)) {
     $space = " ";
     echo "<br>";
     $id = $row['guest_id'];
@@ -91,9 +95,9 @@ function submit($roomNumber,$mysqli){
     $info = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `guest` WHERE `guest_id` = $id"));
     echo $info['first_name'] . $space . $info['last_name'];
   }
-}
 
 ?>
+</div>
 
 </body>
 </html>

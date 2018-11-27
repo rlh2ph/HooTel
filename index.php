@@ -39,15 +39,11 @@
         <div class="header-content-inner">
           <h1 id="homeHeading">HOSPITALITY <br> FOR EVERYONE</h1>
           <hr>
-		  <p style="font-size:20px">Wahoowa</p>
+		  <p style="font-size:20px; color: #f05f40;">Wahoowa</p>
+
         </div>
 		<br>
-		<div id="dot-div" style="text-align:center">
-			<span class="dot dot-active" id="dot-0" data-slide="1"></span>
-			<span class="dot" id="dot-1" data-slide="2"></span>
-			<span class="dot" id="dot-2" data-slide="3"></span>
-			<span class="dot" id="dot-3" data-slide="4"></span>
-		</div>
+
       </div>
     </header>
 
@@ -93,21 +89,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.3.6/scrollreveal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="./js/creative.min.js"></script>
-
-	<!--Preload the background images -->
-	<script>
-		var h1 = new Image();
-		var h2 = new Image();
-		var h3 = new Image();
-		h1.src = "img/header1.jpg";
-		h2.src = "img/header2.jpg";
-		h3.src = "img/header3.jpg";
-	</script>
-
-	<!--Our own js -->
-	<script src="js/homepage.js"></script>
 
   </body>
 

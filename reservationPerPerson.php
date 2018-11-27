@@ -29,6 +29,7 @@ $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproj
 <!--Our own css -->
 <link href="reservation.css" rel="stylesheet">
 
+
 </head>
   <body>
 
@@ -52,11 +53,11 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 {
-    submit($lastName,$mysqli);
+    $guest_result = submit($lastName,$mysqli);
 }
+
 ?>
 
 
@@ -78,16 +79,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 
 <?php
 
+
 function submit($lastName,$mysqli){
-  echo "<h2>Last name searched: $lastName<h2>";
   $query_string = "SELECT * FROM `guest` WHERE `last_name` = '$lastName' ";
   $result = $mysqli->query($query_string);
   if(!$result){
     die("Error in query:". mysqli_error($mysqli));
   }
-
-
-  while ($row = mysqli_fetch_assoc($result)) {
+  return $result;
+}
+?>
+<div class="heading">
+<?php
+  while ($row = mysqli_fetch_assoc($guest_result)) {
     $guest_id = $row['guest_id'];
     $guest_first_name = $row['first_name'];
     $guest_last_name = $row['last_name'];
@@ -128,9 +132,9 @@ function submit($lastName,$mysqli){
     echo "Smoking: " . $smoking;
     echo "<br>";
   }
-}
 
 ?>
+</div>
 
 </body>
 </html>

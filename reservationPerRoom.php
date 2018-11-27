@@ -46,17 +46,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 }
 
 function submit($roomNumber,$mysqli){
-  echo "<h2>Room searched: <h2>";
-  echo $roomNumber;
+  echo "<h2>Room searched: $roomNumber<h2>";
   $result = $mysqli->query("SELECT * FROM `reserve` WHERE `room_num` = $roomNumber LIMIT 0, 30 ");
   while ($row = mysqli_fetch_assoc($result)) {
+    $res_id = $row['res_id'];
     $space = " ";
     echo "<br>";
     $id = $row['guest_id'];
-    echo "Guest ID: " . $id;
-    echo "<br>";
+    //$check_in = $result['check_in'];
+    //$check_out = $result['check_out'];
+    //echo "Guest ID: " . $id;
+    //echo "<br>";
+    $res_info = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `reserve` WHERE `res_id` = $res_id"));
     $info = mysqli_fetch_assoc($mysqli->query("SELECT * FROM `guest` WHERE `guest_id` = $id"));
+    $check_in = $res_info['check_in'];
+    $check_out = $res_info['check_out'];
     echo $info['first_name'] . $space . $info['last_name'];
+    echo "<br>";
+    echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
+    echo "<br>";
   }
 }
 

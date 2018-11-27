@@ -107,11 +107,18 @@ function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
   //echo "res id: " . $row2['res_id'];
   //echo "<br>";
   $rID = $row2['res_id'];
+  /*
   $result3 = $mysqli->query("SELECT * FROM `payment` WHERE `reservation_id` = '$rID'");
   $row3 = mysqli_fetch_assoc($result3);
-  $amount  = $row3['price'];
+  */
+  //$dateCheckin = strtotime($checkin);
+  //$dateCheckout = strtotime($checkout);
+  $checkinFormat = new DateTime($checkin);
+  $checkoutFormat = new DateTime($checkout);
+  $amount = $checkinFormat->diff($checkoutFormat);
+  $numDays = $amount->d;
   //echo "Price: " . $amount;
-  return $amount;
+  return $numDays * 50;
 }
 
 

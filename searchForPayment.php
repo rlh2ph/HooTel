@@ -89,7 +89,11 @@ function test_input($data) {
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 {
+    session_start();
     $paymentAmount = submit($fname,$lname,$dob,$mysqli,$checkin,$checkout);
+    $_SESSION['resAmt'] = $paymentAmount;
+    header("Location:payment.php");
+
 }
 function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
   echo $fname;

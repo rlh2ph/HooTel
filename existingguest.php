@@ -37,10 +37,6 @@
 
 </head>
   <body>
-    <?php
-  		include(dirname(__FILE__).'/components/nav.php');
-  	?>
-
 
 
 <?php
@@ -121,9 +117,21 @@ function test_input($data) {
   return $data;
 }
 ?>
+<?php
+if (isset($_POST['submit'])) {
+     $_SESSION['guest_id'] = $_POST['guest'];
+     header("Location:reservation.php");
+     die();
+}
+?>
+
+<?php
+  include(dirname(__FILE__).'/components/nav.php');
+?>
+
 <div class="center-screen">
 <h2 class="heading">Existing Guests</h2>
-<form action='reservation.php' method="post">
+<form method="post">
   <?php
   $sql=mysqli_query($mysqli, "SELECT * FROM guest");
   if(mysqli_num_rows($sql)){
@@ -141,11 +149,7 @@ function test_input($data) {
 </form>
 </div>
 
-<?php
-if (isset($_POST['submit'])) {
-     $_SESSION['guest_id'] = $_POST['guest'];
-}
-?>
+
 
 
 </body>

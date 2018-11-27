@@ -12,8 +12,8 @@
   $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
 <?php
-$fname = $dob = $lname ="";
-$fnameErr = $dobErr = $lnameErr ="";
+$fname = $dob = $lname = $checkin = $checkout = "";
+$fnameErr = $dobErr = $lnameErr = $checkinErr = $checkoutErr = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["fname"])) {
     $fnameErr = "First Name is Required!";
@@ -41,6 +41,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $dobErr = "Only letters and white space allowed";
     }
   }
+  if (empty($_POST["checkin"])) {
+    $checkinErr = "Date of birth is required!";
+  } else {
+    $checkin = test_input($_POST["checkin"]);
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$checkin)) {
+      $checkinErr = "Only letters and white space allowed";
+    }
+  }
+  if (empty($_POST["checkout"])) {
+    $checkoutErr = "Date of birth is required!";
+  } else {
+    $checkout = test_input($_POST["checkout"]);
+    if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$checkout)) {
+      $checkoutErr = "Only letters and white space allowed";
+    }
+  }
 }
 function test_input($data) {
   $data = trim($data);
@@ -61,25 +77,41 @@ function test_input($data) {
   Date of Birth: <input type="text" name="dob" value="<?php echo $dob;?>">
   <span class="error">* <?php echo $dobErr;?></span>
   <br><br>
+  Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
+  <span class="error">* <?php echo $dobErr;?></span>
+  <br><br>
+  Check Out: <input type="text" name="checkout" value="<?php echo $checkout;?>">
+  <span class="error">* <?php echo $dobErr;?></span>
+  <br><br>
   <input type="submit" name="submit" value="Submit">
 </form>
 
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
 {
-    submit($fname,$lname,$dob,$mysqli);
+    session_start();
+    $paymentAmount = submit($fname,$lname,$dob,$mysqli,$checkin,$checkout);
+    $_SESSION['resAmt'] = $paymentAmount;
+    header("Location:payment.php");
+
 }
-function submit($fname,$lname,$dob,$mysqli){
-  echo $fname;
-  echo $lname;
-  echo $dob;
-  $result = $mysqli->query($sql = "SELECT * FROM `guest` WHERE `last_name` LIKE \'$lname\' AND `first_name` LIKE \'$fname\' AND `DOB` = \'$dob\' LIMIT 0, 30 ");
-  while ($row = mysqli_fetch_assoc($result)) {
-    $space = " ";
-    echo "<br>";
-    $id = $row['guest_id'];
-    echo "Guest ID: " . $id;
-  }
+function submit($fname,$lname,$dob,$mysqli,$checkin,$checkout){
+
+  $result = $mysqli->query("SELECT `guest_id` FROM `guest` WHERE `last_name` = '$lname' AND `first_name` = '$fname' AND `DOB` = '$dob'");
+  $row = mysqli_fetch_assoc($result);
+  //echo $row['guest_id'];
+  //echo "<br>";
+  $gID = $row['guest_id'];
+  $result2 = $mysqli->query("SELECT * FROM `reserve` WHERE`check_in` = '$checkin' AND `check_out` = '$checkout' AND  `guest_id` = '$gID'");
+  $row2 = mysqli_fetch_assoc($result2);
+  //echo "res id: " . $row2['res_id'];
+  //echo "<br>";
+  $rID = $row2['res_id'];
+  $result3 = $mysqli->query("SELECT * FROM `payment` WHERE `reservation_id` = '$rID'");
+  $row3 = mysqli_fetch_assoc($result3);
+  $amount  = $row3['price'];
+  //echo "Price: " . $amount;
+  return $amount;
 }
 
 

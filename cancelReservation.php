@@ -85,12 +85,21 @@ include(dirname(__FILE__).'/components/nav.php');
 
 function submit($reservationNumber,$conn){
   $reserve = "DELETE FROM reserve WHERE res_id = '$reservationNumber'";
+  $cancel = "DELETE FROM payment WHERE reservation_id = '$reservationNumber'";
 
   if ($conn->query($reserve) === TRUE) {
       echo "Record deleted successfully";
-      header("Location:reservationPerPerson.php");
+      if($conn->query($cancel) == TRUE){
+        echo "Record deleted successfulluy";
+        header("Location:reservationPerPerson.php");
+        die();
+      }
+      else{
+        echo "Error deleting record: " . $conn->error;
+      }
+
   } else {
-      echo "Error deleting record: " . $conn->error;
+
   }
   $conn->close();
 }

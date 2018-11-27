@@ -92,7 +92,7 @@ function submit($lastName,$mysqli){
   return $result;
 }
 ?>
-<div class="heading">
+<div class="heading" style="font-size: 25px;">
 <?php
   while ($row = mysqli_fetch_assoc($guest_result)) {
     $guest_id = $row['guest_id'];

@@ -82,8 +82,8 @@ function submit($roomNumber,$mysqli){
   return $result;
 }
 ?>
-<div class="heading">
-  
+<div class="heading" style="font-size: 25px;">
+
 <?php
 
 while ($row = mysqli_fetch_assoc($room_result)) {

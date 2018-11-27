@@ -112,7 +112,6 @@ function test_input($data) {
 ?>
 <?php
 if($roomnumErr == "" && $nameErr == "" && $cardnumErr == "" && $expErr == "" && $cvvErr == "" && $priceErr == ""){
-  echo "yah";
   if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
       $res_id = reservationInfo($mysqli,$_SESSION["checkin"],$_SESSION["checkout"],$_POST["roomnum"], $_SESSION["partysize"]);
       $pay_id = paymentInfo($mysqli, $_POST["name"], $_POST["cardnum"], $_POST["exp"], $_POST["cvv"], $_POST["price"], $res_id);
@@ -126,10 +125,6 @@ if($roomnumErr == "" && $nameErr == "" && $cardnumErr == "" && $expErr == "" && 
 
 <?php
   include(dirname(__FILE__).'/components/nav.php');
-  echo "guest", $_SESSION["guest_id"];
-  echo "checkin", $_SESSION["checkin"];
-  echo "checkout", $_SESSION["checkout"];
-  echo "partysize", $_SESSION["partysize"];
 
 ?>
 <div class="center-screen">
@@ -138,7 +133,20 @@ if($roomnumErr == "" && $nameErr == "" && $cardnumErr == "" && $expErr == "" && 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="heading">
   <?php
-  $sql=mysqli_query($mysqli, "SELECT * FROM room WHERE available=1");
+  $in = $_SESSION["checkin"];
+  echo $in;
+  $out = $_SESSION["checkout"];
+  echo " ";
+  echo $out;
+  $sql=mysqli_query($mysqli, "SELECT room_num FROM room WHERE room_num NOT IN (
+    SELECT room_num FROM reserve WHERE
+    ('$in' < reserve.check_in && '$in' < reserve.check_out && reserve.check_in < '$out' && '$out' < reserve.check_out) ||
+    (reserve.check_in < '$in' && '$in' < reserve.check_out && reserve.check_in < '$out' && '$out' < reserve.check_out) ||
+    (reserve.check_in < '$in' && reserve.check_in < '$out' && '$in' < reserve.check_out && reserve.check_out < '$out') ||
+    ('$in' < reserve.check_in && '$in' < reserve.check_out && reserve.check_in < '$out' && reserve.check_out < '$out')
+  )");
+
+
   if(mysqli_num_rows($sql)){
   $select= 'Room #: <select name="roomnum">';
   while($rs=mysqli_fetch_array($sql)){

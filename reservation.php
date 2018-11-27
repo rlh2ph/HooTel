@@ -122,7 +122,7 @@ function reservationInfo($mysqli,$checkin,$checkout,$roomnum){
       echo "Reservation Records inserted successfully.";
       header("Location:index.php");
   } else{
-      echo "ERROR: Could not able to execute $reservation. " . mysqli_error($mysqli);
+      echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
   }
 }
 

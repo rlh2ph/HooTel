@@ -102,7 +102,7 @@ $payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VAL
 if(mysqli_query($mysqli, $payment)){
     echo "Records inserted successfully.";
 } else{
-    echo "ERROR: Could not able to execute $payment. " . mysqli_error($mysqli);
+    echo "ERROR: Could not execute $payment. " . mysqli_error($mysqli);
 }
 ?>
 

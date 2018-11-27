@@ -1,17 +1,39 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<style>
-.error {color: #FF0000;}
-</style>
-</head>
-<body>
-
-
 <?php
-  $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
   session_start();
+  $mysqli = new mysqli("mysql.cs.virginia.edu", "am7eu", "u9KzwMUi", "am7eu_dbproject");
 ?>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>The HooTel</title>
+
+<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"/>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+  <!-- Plugin CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/creative.min.css" rel="stylesheet">
+
+<!--Our own css -->
+<link href="reservation.css" rel="stylesheet">
+
+</head>
+  <body>
+
+
 
 <?php
 // define variables and set to empty values
@@ -74,10 +96,26 @@ function test_input($data) {
 }
 ?>
 
-<h2>Payment</h2>
-<h4>Card Information</h4>
+<?php
+
+$payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";
+if(mysqli_query($mysqli, $payment)){
+    echo "Records inserted successfully.";
+} else{
+    echo "ERROR: Could not able to execute $payment. " . mysqli_error($mysqli);
+}
+?>
+
+<?php
+  include(dirname(__FILE__).'/components/nav.php');
+?>
+
+<div class="center-screen">
+<h2 class="heading">Payment</h2>
+<h4 class="heading">Card Information</h4>
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <div class="heading">
   Cardholder Name: <input type="text" name="name" value="<?php echo $name;?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
@@ -89,22 +127,17 @@ function test_input($data) {
   <br><br>
   CVV: <input type="text" name="cvv" value="<?php echo $cvv;?>">
   <span class="error">* <?php echo $cvvErr;?></span>
-  <br><br><br><br>
+  <br>
+  <hr style="width: 100px;">
   Price: $<input type="text" name="price" value="<?php echo $_SESSION['resAmt'];?>">
   <span class="error">* <?php echo $priceErr;?></span>
   <br><br>
+</div>
   <input type="submit" name="submit" value="Submit">
 </form>
+</div>
 
-<?php
 
-$payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";
-if(mysqli_query($mysqli, $payment)){
-    echo "Records inserted successfully.";
-} else{
-    echo "ERROR: Could not able to execute $payment. " . mysqli_error($mysqli);
-}
-?>
 
 </body>
 </html>

@@ -60,15 +60,16 @@ function test_input($data) {
   return $data;
 }
 ?>
+<?php
+$res_id = $_GET["id"];
+echo $res_id;
+submit($res_id,$conn);
+?>
 
 <?php
 include(dirname(__FILE__).'/components/nav.php');
  ?>
 
- <?php
- $res_id = $_GET["id"];
- echo $res_id;
-  ?>
 
 <!-- <h2>Cancel Reservation<h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -80,7 +81,7 @@ include(dirname(__FILE__).'/components/nav.php');
 
 <?php
 
-submit($res_id,$conn);
+
 
 function submit($reservationNumber,$conn){
   $reserve = "DELETE FROM reserve WHERE res_id = '$reservationNumber'";

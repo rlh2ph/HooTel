@@ -38,9 +38,6 @@
 </head>
   <body>
 
-
-
-
 <?php
 // define variables and set to empty values
 $roomnumErr = $nameErr = $cardnumErr = $expErr = $cvvErr = $priceErr = "";

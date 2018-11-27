@@ -87,9 +87,9 @@ function test_input($data) {
 ?>
 <?php
 $res_id = $_GET['id'];
-$_SESSION["res_id"] = $res_id;
-echo $res_id;
-echo $_SESSION['res_id'];
+if($_SERVER['REQUEST_METHOD'] == "GET"){
+  $_SESSION["res_id"] = $res_id;
+}
 if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr == ""){
   if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
     echo $_POST["roomnum"];
@@ -150,13 +150,13 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr
 
 <?php
 function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize,$id){
-  echo $id;
-  $update_res = "UPDATE reserve SET room_num = '$roomnum' WHERE res_id = '$id'";
+  $res_id = $_SESSION['res_id'];
+  $update_res = "UPDATE reserve SET check_in = '$checkin', check_out = '$checkout', party_size = '$partysize', room_num = '$roomnum' WHERE res_id='$res_id'";
   echo $update_res;
   if(mysqli_query($mysqli, $update_res)){
       echo "Reservation updated successfully!";
-      //header("Location:index.php");
-      // die();
+      header("Location:reservationPerPerson.php");
+      die();
   } else {
       echo "ERROR: Could not execute $update_res. " . mysqli_error($mysqli);
   }

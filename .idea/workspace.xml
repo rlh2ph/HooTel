@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2ecaeb0-c083-4bb9-8896-cd10f3fa4c77" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reservationPerPerson.php" afterPath="$PROJECT_DIR$/reservationPerPerson.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reservationPerRoom.php" afterPath="$PROJECT_DIR$/reservationPerRoom.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +23,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reservationPerRoom.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reservationPerRoom.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reservationPerRoom.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1282">
@@ -35,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reservationPerPerson.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reservationPerPerson.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reservationPerPerson.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="66" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+            <state relative-caret-position="1368">
+              <caret line="114" column="20" lean-forward="false" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -136,8 +134,8 @@
         <option value="$PROJECT_DIR$/search.html" />
         <option value="$PROJECT_DIR$/components/nav.php" />
         <option value="$PROJECT_DIR$/search.php" />
-        <option value="$PROJECT_DIR$/reservationPerPerson.php" />
         <option value="$PROJECT_DIR$/reservationPerRoom.php" />
+        <option value="$PROJECT_DIR$/reservationPerPerson.php" />
       </list>
     </option>
   </component>
@@ -344,18 +342,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reservationPerPerson.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="66" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reservationPerRoom.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1282">
           <caret line="70" column="85" lean-forward="false" selection-start-line="70" selection-start-column="85" selection-end-line="70" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reservationPerPerson.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1368">
+          <caret line="114" column="20" lean-forward="false" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
           <folding />
         </state>
       </provider>

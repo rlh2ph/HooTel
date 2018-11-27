@@ -143,13 +143,18 @@ foreach($_POST as $key => $value) {
 
   }
   else{
-    echo "Error, not all values given.";
+    header("Refresh: 0; url=searchForPayment.php");
+    alert("Error, not all values given.");
     $state += 1;
-    
+
     //echo $state;
     die;
   }
 
+}
+
+function alert($msg) {
+  echo "<script type='text/javascript'>alert('$msg');</script>";
 }
 
 $payment = "INSERT INTO payment (price, card_num, exp, cvv, cardholder_name) VALUES ('$price', '$cardnum', '$exp', '$cvv', '$name')";

@@ -144,6 +144,8 @@ function submit($lastName,$mysqli){
         echo "<br>";
         echo "Smoking: " . $smoking;
         echo "<br>";
+        echo "<a href='editReservation.php'>Edit Reservation</a>";
+        echo "<br>";
     }
   }
 

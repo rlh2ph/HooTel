@@ -86,11 +86,15 @@ function test_input($data) {
 }
 ?>
 <?php
-
+$res_id = $_GET['id'];
+$_SESSION["res_id"] = $res_id;
+echo $res_id;
+echo $_SESSION['res_id'];
 if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr == ""){
   if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit'])){
-      reservationInfo($mysqli,$_POST["checkin"],$_POST["checkout"],$_POST["roomnum"], $_POST["partysize"]);
-      echo $_POST['partysize'];
+    echo $_POST["roomnum"];
+    echo $_SESSION['res_id'];
+    reservationInfo($mysqli,$_POST["checkin"],$_POST["checkout"],$_POST["roomnum"], $_POST["partysize"], $_SESSION["res_id"]);
   }
 }
 ?>
@@ -105,14 +109,27 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <h4 class="heading">Reservation Information</h4>
   <div class="heading">
-  Check In: <input type="text" name="checkin" value="<?php echo $checkin;?>">
+  <?php
+  $id = $_GET['id'];
+  $res = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM reserve WHERE res_id=$id"));
+  $in = $res["check_in"];
+  $out = $res["check_out"];
+  $partysize = $res["party_size"];
+  ?>
+  Check In: <input type="text" name="checkin" value="<?php echo $in;?>">
   <span class="error">* <?php echo $checkinErr;?></span>
   <br><br>
-  Check Out: <input type="text" name="checkout" value="<?php echo $checkout;?>">
+  Check Out: <input type="text" name="checkout" value="<?php echo $out;?>">
   <span class="error">* <?php echo $checkoutErr;?></span>
   <br><br>
   <?php
-  $sql=mysqli_query($mysqli, "SELECT * FROM room WHERE available=1");
+  $sql=mysqli_query($mysqli, "SELECT room_num FROM room WHERE room_num NOT IN (
+    SELECT room_num FROM reserve WHERE
+    ('$in' < reserve.check_in && '$in' < reserve.check_out && reserve.check_in < '$out' && '$out' < reserve.check_out) ||
+    (reserve.check_in < '$in' && '$in' < reserve.check_out && reserve.check_in < '$out' && '$out' < reserve.check_out) ||
+    (reserve.check_in < '$in' && reserve.check_in < '$out' && '$in' < reserve.check_out && reserve.check_out < '$out') ||
+    ('$in' < reserve.check_in && '$in' < reserve.check_out && reserve.check_in < '$out' && reserve.check_out < '$out')
+  )");
   if(mysqli_num_rows($sql)){
   $select= 'Room #: <select name="roomnum">';
   while($rs=mysqli_fetch_array($sql)){
@@ -132,30 +149,17 @@ if($partysizeErr == "" && $checkinErr == "" && $checkoutErr == "" && $roomnumErr
 </div>
 
 <?php
-function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize){
-  $resID = $_SESSION['res_id'];
-  //$reservation = "INSERT INTO reserve (check_in, check_out, room_num, guest_id, party_size) VALUES ('$checkin', '$checkout', '$roomnum', '$id', '$partysize')";
-  // update room table to make room not available
-  //$update_room = "UPDATE room SET available = 0 WHERE room_num = '$roomnum'";
-  $update_res = "UPDATE reserve SET check_in = '$checkin' AND check_out = '$checkout' AND room_num = '$roomnum' AND party_size = '$partysize' WHERE res_id = '$resID'";
+function reservationInfo($mysqli,$checkin,$checkout,$roomnum,$partysize,$id){
+  echo $id;
+  $update_res = "UPDATE reserve SET room_num = '$roomnum' WHERE res_id = '$id'";
+  echo $update_res;
   if(mysqli_query($mysqli, $update_res)){
       echo "Reservation updated successfully!";
       //header("Location:index.php");
-      die();
+      // die();
   } else {
       echo "ERROR: Could not execute $update_res. " . mysqli_error($mysqli);
   }
-/*
-  if(mysqli_query($mysqli, $reservation)){
-      echo "Reservation Records inserted successfully.";
-      if(mysqli_query($mysqli, $update_room)){
-        echo "Reservation Records inserted successfully.";
-        header("Location:index.php");
-        die();
-      }
-  } else{
-      echo "ERROR: Could not execute $reservation. " . mysqli_error($mysqli);
-  }*/
 }
 ?>
 

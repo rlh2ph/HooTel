@@ -114,6 +114,8 @@ function submit($lastName,$mysqli){
         $check_out = $new_row['check_out'];
         $res_id = $new_row['res_id'];
         $_SESSION['res_id'] = $res_id;
+        $_SESSION['edit_checkin'] = $check_in;
+        $_SESSION['edit_checkout'] = $check_out;
         echo $guest_first_name . " " . $guest_last_name;
         echo "<br>";
         echo date("m/d/Y", strtotime($check_in)) . " - " . date("m/d/Y", strtotime($check_out));
@@ -148,7 +150,7 @@ function submit($lastName,$mysqli){
         echo "<br>";
         echo "Smoking: " . $smoking;
         echo "<br>";
-        echo "<a href='editReservation.php'>Edit Reservation</a>";
+        echo "<a href='editReservation.php?id=" . $res_id ."'>Edit Reservation</a>";
         echo "<br>";
     }
   }

@@ -39,8 +39,8 @@
 
 <?php
 // define variables and set to empty values
-$firstnameErr = $lastnameErr = $dobErr = $partysizeErr = $checkinErr = $checkoutErr = $roomnumErr = "";
-$firstname = $lastname = $dob = $partysize = $checkin = $checkout = $roomnum = "";
+$firstnameErr = $lastnameErr = $dobErr = "";
+$firstname = $lastname = $dob = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["firstname"])) {
@@ -81,20 +81,12 @@ function test_input($data) {
 ?>
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
-{
-    submit($_POST["firstname"], $_POST["lastname"], $_POST["dob"], $mysqli);
-}
-function submit($firstname, $lastname, $dob, $mysqli){
-  $guest = "INSERT INTO guest (first_name, last_name, DOB) VALUES ('$firstname', '$lastname', '$dob')";
-  if(mysqli_query($mysqli, $guest)){
-      echo "Records inserted successfully.";
-      $_SESSION['guest_id'] = $mysqli->insert_id;
-      header("Location:reservation.php");
-      die();
-  } else{
-      echo "ERROR: Could not able to execute $guest. " . mysqli_error($mysqli);
+if($firstnameErr == "" && $lastnameErr == "" && $dobErr == ""){
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
+  {
+      submit($_POST["firstname"], $_POST["lastname"], $_POST["dob"], $mysqli);
   }
+
 }
 ?>
 
@@ -105,7 +97,7 @@ function submit($firstname, $lastname, $dob, $mysqli){
 <div class="center-screen">
 <h2 class="heading">New Guest</h2>
 <p><span class="error">* required field</span></p>
-<form method="post" action="newguest.php">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="heading">
   First Name: <input type="text" name="firstname" value="<?php echo $firstname;?>">
   <span class="error">* <?php echo $firstnameErr;?></span>
@@ -120,6 +112,20 @@ function submit($firstname, $lastname, $dob, $mysqli){
   <input type="submit" name="submit" value="Submit">
 </form>
 </div>
+
+<?php
+function submit($firstname, $lastname, $dob, $mysqli){
+  $guest = "INSERT INTO guest (first_name, last_name, DOB) VALUES ('$firstname', '$lastname', '$dob')";
+  if(mysqli_query($mysqli, $guest)){
+      echo "Records inserted successfully.";
+      $_SESSION['guest_id'] = $mysqli->insert_id;
+      header("Location:reservation.php");
+      die();
+  } else{
+      echo "ERROR: Could not able to execute $guest. " . mysqli_error($mysqli);
+  }
+}
+ ?>
 
 
 

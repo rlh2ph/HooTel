@@ -55,7 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[0-9]*$/",$partysize)) {
       $partysizeErr = "Party size must be a number";
     }
-  }
+    else if($_POST["partysize"] > 8){
+      $partysizeErr = "Party size cannot exceed 8 people";
+    }
+    else if($_POST["partysize"] == 0){
+      $partysizeErr = "Party size cannot be 0";
+    }
+  }        
   if (empty($_POST["checkin"])) {
     $checkinErr = "Check in date is required";
   } else {
@@ -73,6 +79,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^([0-9]{4})([-])([0-9]{2})([-])([0-9]{2})$/",$checkout)) {
       $checkoutErr = "Check out date must be in the format of yyyy-mm-dd";
     }
+  }
+  if($_POST["checkout"] < $_POST["checkin"]){
+    $checkoutErr = "Checkout cannot be before checkin";
   }
   if (empty($_POST["roomnum"])) {
     $roomnumErr = "Room number is required";

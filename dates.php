@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if($_POST["partysize"] == 0){
       $partysizeErr = "Party size cannot be 0";
     }
-  }
+  }        
   if (empty($_POST["checkin"])) {
     $checkinErr = "Check in date is required";
   } else {

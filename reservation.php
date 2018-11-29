@@ -143,7 +143,7 @@ if($roomnumErr == "" && $nameErr == "" && $cardnumErr == "" && $expErr == "" && 
     (reserve.check_in <= '$in' && reserve.check_in <= '$out' && '$in' <= reserve.check_out && reserve.check_out <= '$out') ||
     ('$in' <= reserve.check_in && '$in' <= reserve.check_out && reserve.check_in <= '$out' && reserve.check_out <= '$out')
   ))) as foo where room_num in ( SELECT room_num FROM room WHERE type_id NOT IN ( SELECT type_id FROM room_type WHERE room_type.capacity <=$party)
-)";
+);"
 
 
   if(mysqli_num_rows($sql)){

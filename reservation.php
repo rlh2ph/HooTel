@@ -136,7 +136,7 @@ if($roomnumErr == "" && $nameErr == "" && $cardnumErr == "" && $expErr == "" && 
   $in = $_SESSION["checkin"];
   $out = $_SESSION["checkout"];
   $party = $_SESSION["partysize"];
-  if($party < 8){
+  if($party < 8 and $party!=2 and $party!=4){
     $sql=mysqli_query($mysqli, "SELECT distinct room_num from (SELECT room_num FROM room WHERE room_num NOT IN (
       SELECT room_num FROM reserve WHERE
       ('$in' <= reserve.check_in && '$in' <= reserve.check_out && reserve.check_in <= '$out' && '$out' <=reserve.check_out) ||
